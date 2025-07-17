@@ -22,7 +22,13 @@ import {
   Shield,
   Clock,
   ChevronDown,
-  Languages
+  Languages,
+  MessageCircle,
+  UserCheck,
+  BarChart3,
+  TrendingUp as TrendingUpIcon,
+  Megaphone,
+  Bot
 } from "lucide-react";
 
 export default function Home() {
@@ -62,142 +68,142 @@ export default function Home() {
 
   const features = language === 'en' ? [
     {
-      icon: Sparkles,
-      title: "Enhanced Interface",
-      description: "Beautiful and intuitive interface that makes Threads more enjoyable to use"
-    },
-    {
-      icon: Zap,
-      title: "Smart Tools",
-      description: "Powerful productivity features that help you get more done in less time"
+      icon: MessageCircle,
+      title: "Smart Contact Discovery",
+      description: "AI-powered agent that finds and engages with your ideal customers, partners, and business contacts in Threads discussions"
     },
     {
       icon: Target,
-      title: "AI-Powered Features",
-      description: "Advanced AI capabilities for better content discovery and engagement"
+      title: "Precision Targeting & Networking",
+      description: "Identifies key decision makers, potential partners, and qualified leads based on their activity and interests"
     },
     {
-      icon: Shield,
-      title: "Privacy First",
-      description: "Your data stays secure with our privacy-focused approach"
+      icon: UserCheck,
+      title: "Authentic Relationship Building",
+      description: "Builds genuine business relationships and trust through meaningful conversations with prospects and industry contacts"
+    },
+    {
+      icon: BarChart3,
+      title: "Contact & Engagement Analytics",
+      description: "Track contact discovery, engagement metrics, relationship building progress, and business opportunities generated"
     }
   ] : [
     {
-      icon: Sparkles,
-      title: "Улучшенный интерфейс",
-      description: "Красивый и интуитивный интерфейс, который делает Threads более приятным в использовании"
-    },
-    {
-      icon: Zap,
-      title: "Умные инструменты",
-      description: "Мощные функции продуктивности, которые помогают достигать большего за меньшее время"
+      icon: MessageCircle,
+      title: "Умное обнаружение контактов",
+      description: "AI-агент, который находит и взаимодействует с вашими идеальными клиентами, партнерами и бизнес-контактами в дискуссиях Threads"
     },
     {
       icon: Target,
-      title: "AI возможности",
-      description: "Продвинутые возможности ИИ для лучшего поиска контента и взаимодействия"
+      title: "Точный таргетинг и нетворкинг",
+      description: "Выявляет ключевых лиц, принимающих решения, потенциальных партнеров и квалифицированных лидов на основе их активности и интересов"
     },
     {
-      icon: Shield,
-      title: "Приватность прежде всего",
-      description: "Ваши данные остаются в безопасности благодаря нашему подходу, ориентированному на конфиденциальность"
+      icon: UserCheck,
+      title: "Подлинное построение отношений",
+      description: "Строит настоящие деловые отношения и доверие через значимые разговоры с перспективами и отраслевыми контактами"
+    },
+    {
+      icon: BarChart3,
+      title: "Аналитика контактов и вовлечения",
+      description: "Отслеживайте обнаружение контактов, метрики вовлечения, прогресс построения отношений и созданные бизнес-возможности"
     }
   ];
 
   const plans = language === 'en' ? [
     {
       name: "Starter",
-      price: 9,
+      price: 49,
       period: "/month",
-      description: "Perfect for getting started",
+      description: "Perfect for small businesses",
       features: [
-        "Enhanced Threads interface",
-        "Basic productivity tools",
-        "Email support",
-        "Chrome extension"
+        "Up to 100 contact discoveries/month",
+        "Basic contact filtering",
+        "Standard networking analytics",
+        "Email support"
       ],
       popular: false
     },
     {
       name: "Professional",
-      price: 29,
+      price: 149,
       period: "/month",
-      description: "For power users",
+      description: "For growing businesses",
       features: [
-        "All Starter features",
-        "AI-powered tools",
-        "Advanced analytics",
+        "Up to 500 contact discoveries/month",
+        "Advanced contact profiling & targeting",
+        "Real-time networking insights",
         "Priority support",
-        "Early access to new features"
+        "Custom outreach templates"
       ],
       popular: true
     },
     {
       name: "Enterprise",
-      price: 99,
+      price: 399,
       period: "/month",
-      description: "For teams and businesses",
+      description: "For large organizations",
       features: [
-        "All Professional features",
-        "Team collaboration",
-        "Custom integrations",
-        "Dedicated support",
-        "White-label options"
+        "Unlimited contact discovery",
+        "Multi-team collaboration",
+        "Advanced relationship mapping",
+        "Dedicated account manager",
+        "Custom CRM integrations"
       ],
       popular: false
     }
   ] : [
     {
       name: "Starter",
-      price: 9,
+      price: 49,
       period: "/месяц",
-      description: "Идеально для начала",
+      description: "Идеально для малого бизнеса",
       features: [
-        "Улучшенный интерфейс Threads",
-        "Базовые инструменты продуктивности",
-        "Email поддержка",
-        "Расширение для Chrome"
+        "До 100 обнаружений контактов/месяц",
+        "Базовая фильтрация контактов",
+        "Стандартная аналитика нетворкинга",
+        "Email поддержка"
       ],
       popular: false
     },
     {
       name: "Professional",
-      price: 29,
+      price: 149,
       period: "/месяц",
-      description: "Для продвинутых пользователей",
+      description: "Для растущего бизнеса",
       features: [
-        "Все функции Starter",
-        "AI-инструменты",
-        "Расширенная аналитика",
+        "До 500 обнаружений контактов/месяц",
+        "Продвинутое профилирование и таргетинг",
+        "Аналитика нетворкинга в реальном времени",
         "Приоритетная поддержка",
-        "Ранний доступ к новинкам"
+        "Кастомные шаблоны для связи"
       ],
       popular: true
     },
     {
       name: "Enterprise",
-      price: 99,
+      price: 399,
       period: "/месяц",
-      description: "Для команд и бизнеса",
+      description: "Для крупных организаций",
       features: [
-        "Все функции Professional",
-        "Командная работа",
-        "Кастомные интеграции",
-        "Персональная поддержка",
-        "White-label опции"
+        "Неограниченный поиск контактов",
+        "Командное сотрудничество",
+        "Продвинутое картирование отношений",
+        "Персональный менеджер",
+        "Интеграции с CRM"
       ],
       popular: false
     }
   ];
 
   const stats = language === 'en' ? [
-    { icon: Users, number: "15K+", label: "Happy Users" },
-    { icon: TrendingUp, number: "98%", label: "Satisfaction Rate" },
-    { icon: Globe, number: "65+", label: "Countries" }
+    { icon: Users, number: "2.5K+", label: "Active Users" },
+    { icon: TrendingUpIcon, number: "15K+", label: "Business Contacts Found" },
+    { icon: MessageCircle, number: "1M+", label: "Successful Connections" }
   ] : [
-    { icon: Users, number: "15K+", label: "Довольных пользователей" },
-    { icon: TrendingUp, number: "98%", label: "Уровень удовлетворенности" },
-    { icon: Globe, number: "65+", label: "Стран" }
+    { icon: Users, number: "2.5K+", label: "Активных пользователей" },
+    { icon: TrendingUpIcon, number: "15K+", label: "Найдено бизнес-контактов" },
+    { icon: MessageCircle, number: "1M+", label: "Успешных подключений" }
   ];
 
   return (
@@ -208,10 +214,10 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                <Brain className="w-5 h-5 text-white" />
+                <Bot className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                ThreadsHelper
+                ThreadsAgent
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -239,11 +245,11 @@ export default function Home() {
                   <ChevronDown className={`w-4 h-4 transition-transform ${isLanguageDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
-                                 {isLanguageDropdownOpen && (
-                   <div 
-                     onClick={(e) => e.stopPropagation()}
-                     className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-xl border border-white/20 rounded-lg overflow-hidden min-w-[120px] z-50"
-                   >
+                {isLanguageDropdownOpen && (
+                  <div 
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-xl border border-white/20 rounded-lg overflow-hidden min-w-[120px] z-50"
+                  >
                     <button
                       onClick={() => {
                         setLanguage('en');
@@ -279,9 +285,9 @@ export default function Home() {
         <div className="text-center max-w-6xl mx-auto">
           {/* Launch Badge */}
           <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-8">
-            <Rocket className="w-4 h-4 text-cyan-400 mr-2" />
+            <Megaphone className="w-4 h-4 text-cyan-400 mr-2" />
             <span className="text-cyan-400 font-semibold">
-              {language === 'en' ? 'Coming Soon' : 'Скоро запуск'}
+              {language === 'en' ? 'AI Business Networking' : 'AI бизнес-нетворкинг'}
             </span>
           </div>
 
@@ -289,17 +295,19 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight">
             {language === 'en' ? (
               <>
-                Make Threads{" "}
+                Your{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  Amazing
+                  Threads
                 </span>
+                {" "}Business Connector
               </>
             ) : (
               <>
-                Сделай Threads{" "}
+                Ваш{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  Невероятным
+                  Threads
                 </span>
+                {" "}Бизнес-Коннектор
               </>
             )}
           </h1>
@@ -307,21 +315,21 @@ export default function Home() {
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-4xl mx-auto leading-relaxed">
             {language === 'en' 
-              ? "The ultimate browser extension that transforms your Threads experience with powerful tools, beautiful design, and smart features."
-              : "Идеальное браузерное расширение, которое трансформирует ваш опыт в Threads с помощью мощных инструментов, красивого дизайна и умных функций."
+              ? "AI-powered agent that discovers, connects, and converts your ideal customers, partners, and business contacts on Threads. Transform social conversations into business opportunities through intelligent networking."
+              : "AI-агент, который обнаруживает, соединяет и конвертирует ваших идеальных клиентов, партнеров и бизнес-контакты в Threads. Превращайте социальные разговоры в бизнес-возможности через интеллектуальный нетворкинг."
             }
           </p>
 
           {/* Feature Pills */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {(language === 'en' ? [
-              { icon: Sparkles, text: "Beautiful Design" },
-              { icon: Zap, text: "Smart Tools" },
-              { icon: Shield, text: "Privacy First" }
+              { icon: Target, text: "Contact Discovery" },
+              { icon: MessageCircle, text: "Smart Networking" },
+              { icon: BarChart3, text: "Business Analytics" }
             ] : [
-              { icon: Sparkles, text: "Красивый дизайн" },
-              { icon: Zap, text: "Умные инструменты" },
-              { icon: Shield, text: "Приватность" }
+              { icon: Target, text: "Поиск контактов" },
+              { icon: MessageCircle, text: "Умный нетворкинг" },
+              { icon: BarChart3, text: "Бизнес-аналитика" }
             ]).map((feature, index) => (
               <div 
                 key={index}
@@ -341,7 +349,7 @@ export default function Home() {
             >
               <div className="flex items-center space-x-3">
                 <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" />
-                <span>{language === 'en' ? 'Get Early Access' : 'Получить ранний доступ'}</span>
+                <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
               </div>
             </button>
             
@@ -350,33 +358,33 @@ export default function Home() {
               className="group px-8 py-4 border-2 border-white/30 text-white font-medium text-lg rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300"
             >
               <div className="flex items-center space-x-3">
-                <span>{language === 'en' ? 'Learn More' : 'Узнать больше'}</span>
+                <span>{language === 'en' ? 'See How It Works' : 'Как это работает'}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </div>
             </a>
           </div>
 
-          {/* Launch Info */}
+          {/* Social Proof */}
           <p className="text-white/60 text-sm md:text-base">
             {language === 'en' 
-              ? `Launching in ${daysUntilLaunch} ${getDayWord(daysUntilLaunch)} • Special launch price $9`
-              : `Запуск через ${daysUntilLaunch} ${getDayWord(daysUntilLaunch)} • Специальная цена запуска $9`
+              ? "Join 2,500+ businesses already building valuable networks with ThreadsAgent"
+              : "Присоединяйтесь к 2 500+ бизнесам, которые уже строят ценные сети с ThreadsAgent"
             }
           </p>
 
-          {/* Browser Support */}
+          {/* Value Proposition */}
           <div className="mt-12 flex items-center justify-center space-x-6 text-white/60">
             <div className="flex items-center space-x-2">
-              <Chrome className="w-5 h-5" />
-              <span className="text-sm">Chrome</span>
+              <Shield className="w-5 h-5 text-green-400" />
+              <span className="text-sm">{language === 'en' ? 'No Spam' : 'Без спама'}</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Globe className="w-5 h-5" />
-              <span className="text-sm">Firefox</span>
+              <UserCheck className="w-5 h-5 text-blue-400" />
+              <span className="text-sm">{language === 'en' ? 'Authentic' : 'Подлинно'}</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Globe className="w-5 h-5" />
-              <span className="text-sm">Edge</span>
+              <BarChart3 className="w-5 h-5 text-purple-400" />
+              <span className="text-sm">{language === 'en' ? 'Measurable' : 'Измеримо'}</span>
             </div>
           </div>
         </div>
@@ -387,12 +395,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {language === 'en' ? 'Powerful Features' : 'Мощные возможности'}
+              {language === 'en' ? 'How ThreadsAgent Discovers & Connects' : 'Как ThreadsAgent находит и соединяет'}
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {language === 'en' 
-                ? "Everything you need to get the most out of Threads"
-                : "Всё, что нужно для максимального использования Threads"
+                ? "Advanced AI technology that finds, analyzes, and connects you with your ideal customers, partners, and business contacts on Threads"
+                : "Продвинутая AI-технология, которая находит, анализирует и соединяет вас с идеальными клиентами, партнерами и бизнес-контактами в Threads"
               }
             </p>
           </div>
@@ -417,6 +425,17 @@ export default function Home() {
       {/* Stats Section */}
       <div className="relative z-10 py-20 px-6 bg-gradient-to-r from-black/20 to-transparent">
         <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              {language === 'en' ? 'Proven Networking Results' : 'Доказанные результаты нетворкинга'}
+            </h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              {language === 'en' 
+                ? "Real businesses building valuable connections and discovering new opportunities with ThreadsAgent"
+                : "Реальные бизнесы строят ценные связи и обнаруживают новые возможности с ThreadsAgent"
+              }
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {stats.map((stat, index) => (
               <div key={index} className="p-6">
@@ -436,12 +455,12 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {language === 'en' ? 'Simple Pricing' : 'Простые цены'}
+              {language === 'en' ? 'Simple, Transparent Pricing' : 'Простые, прозрачные цены'}
             </h2>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
               {language === 'en' 
-                ? "Choose the plan that works best for you. Start with our special launch offer."
-                : "Выберите план, который подходит именно вам. Начните со специального предложения запуска."
+                ? "Choose the plan that fits your business size and customer acquisition goals"
+                : "Выберите план, который подходит размеру вашего бизнеса и целям привлечения клиентов"
               }
             </p>
           </div>
@@ -477,18 +496,14 @@ export default function Home() {
                 </ul>
 
                 <button 
-                  onClick={() => plan.popular && setIsPaymentModalOpen(true)}
+                  onClick={() => setIsPaymentModalOpen(true)}
                   className={`w-full py-3 rounded-xl font-medium transition-all duration-300 ${
                     plan.popular 
                       ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:shadow-lg hover:shadow-cyan-500/25' 
-                      : 'bg-white/10 text-white border border-white/20 hover:bg-white/20 cursor-not-allowed opacity-60'
+                      : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
                   }`}
-                  disabled={!plan.popular}
                 >
-                  {plan.popular 
-                    ? (language === 'en' ? 'Pre-order Now' : 'Предзаказ сейчас')
-                    : (language === 'en' ? 'Coming Soon' : 'Скоро')
-                  }
+                  {language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}
                 </button>
               </div>
             ))}
@@ -500,12 +515,12 @@ export default function Home() {
       <div className="relative z-10 py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {language === 'en' ? 'Ready to Transform Your Threads?' : 'Готовы трансформировать ваш Threads?'}
+            {language === 'en' ? 'Ready to Transform Your Business Networking?' : 'Готовы трансформировать ваш бизнес-нетворкинг?'}
           </h2>
           <p className="text-lg text-white/80 mb-8">
             {language === 'en' 
-              ? "Join thousands of users who are already enjoying a better Threads experience."
-              : "Присоединяйтесь к тысячам пользователей, которые уже наслаждаются лучшим опытом в Threads."
+              ? "Join thousands of businesses using AI to discover valuable contacts, build meaningful relationships, and unlock new opportunities through intelligent Threads networking."
+              : "Присоединяйтесь к тысячам бизнесов, использующих AI для обнаружения ценных контактов, построения значимых отношений и открытия новых возможностей через интеллектуальный нетворкинг в Threads."
             }
           </p>
           
@@ -515,7 +530,7 @@ export default function Home() {
           >
             <div className="flex items-center space-x-3">
               <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" />
-              <span>{language === 'en' ? 'Get Early Access' : 'Получить ранний доступ'}</span>
+              <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
             </div>
           </button>
         </div>
@@ -527,16 +542,16 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-6 md:mb-0">
               <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                <Brain className="w-5 h-5 text-white" />
+                <Bot className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                ThreadsHelper
+                ThreadsAgent
               </span>
             </div>
             
             <div className="flex items-center space-x-8">
-              <a href="mailto:support@threadshelper.com" className="text-white/60 hover:text-cyan-400 transition-colors">
-                support@threadshelper.com
+              <a href="mailto:support@threadsagent.com" className="text-white/60 hover:text-cyan-400 transition-colors">
+                support@threadsagent.com
               </a>
               <a href="#features" className="text-white/60 hover:text-cyan-400 transition-colors">
                 {language === 'en' ? 'Features' : 'Возможности'}
@@ -545,7 +560,7 @@ export default function Home() {
           </div>
           
           <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/60">
-            <p>&copy; 2025 ThreadsHelper. {language === 'en' ? 'All rights reserved.' : 'Все права защищены.'}</p>
+            <p>&copy; 2025 ThreadsAgent. {language === 'en' ? 'All rights reserved.' : 'Все права защищены.'}</p>
           </div>
         </div>
       </footer>
@@ -556,7 +571,7 @@ export default function Home() {
           <div className="bg-black/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-white">
-                {language === 'en' ? 'Get Early Access' : 'Ранний доступ'}
+                {language === 'en' ? 'Start Your Free Trial' : 'Начать бесплатный пробный период'}
               </h3>
               <button 
                 onClick={() => setIsPaymentModalOpen(false)}
@@ -567,31 +582,27 @@ export default function Home() {
             </div>
             
             <div className="mb-6">
-              <div className="text-3xl font-bold text-white mb-2">$9</div>
+              <div className="text-3xl font-bold text-white mb-2">
+                {language === 'en' ? 'Free' : 'Бесплатно'}
+              </div>
               <div className="text-white/70">
-                {language === 'en' ? 'Special launch price' : 'Специальная цена запуска'}
+                {language === 'en' ? '14-day free trial' : '14-дневный бесплатный пробный период'}
               </div>
               <div className="text-cyan-400 text-sm">
-                {language === 'en' ? 'Save $20 - normally $29' : 'Экономия $20 - обычно $29'}
+                {language === 'en' ? 'No credit card required' : 'Кредитная карта не требуется'}
               </div>
             </div>
 
             <div className="space-y-4">
               <button className="w-full flex items-center justify-center space-x-3 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all">
-                <CreditCard className="w-5 h-5" />
-                <span>{language === 'en' ? 'Pay with Card' : 'Оплата картой'}</span>
-              </button>
-              
-              <button className="w-full flex items-center justify-center space-x-3 py-3 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-colors">
-                <Bitcoin className="w-5 h-5 text-white" />
-                <span className="text-white">{language === 'en' ? 'Pay with Crypto' : 'Оплата криптой'}</span>
+                <Rocket className="w-5 h-5" />
+                <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
               </button>
             </div>
 
-            <div className="mt-6 text-center text-white/60 text-sm flex items-center justify-center space-x-2">
-              <Clock className="w-4 h-4" />
+            <div className="mt-6 text-center text-white/60 text-sm">
               <span>
-                {language === 'en' ? 'Launch date: August 10, 2025' : 'Дата запуска: 10 августа 2025'}
+                {language === 'en' ? 'No commitment • Cancel anytime' : 'Никаких обязательств • Отменить в любое время'}
               </span>
             </div>
           </div>
