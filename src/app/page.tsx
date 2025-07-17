@@ -29,13 +29,15 @@ import {
   BarChart3,
   TrendingUp as TrendingUpIcon,
   Megaphone,
-  Bot
+  Bot,
+  Menu
 } from "lucide-react";
 
 export default function Home() {
   const { language, setLanguage } = useLanguage();
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [daysUntilLaunch, setDaysUntilLaunch] = useState(0);
 
   useEffect(() => {
@@ -88,11 +90,14 @@ export default function Home() {
       if (isLanguageDropdownOpen) {
         setIsLanguageDropdownOpen(false);
       }
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
     };
 
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
-  }, [isLanguageDropdownOpen]);
+  }, [isLanguageDropdownOpen, isMobileMenuOpen]);
 
   const getDayWord = (days: number) => {
     if (language === 'ru') {
@@ -247,26 +252,29 @@ export default function Home() {
     <BackgroundGradientAnimation>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                <Bot className="w-5 h-5 text-white" />
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
+                <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 ThreadsHelper
               </span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-white/80 hover:text-cyan-400 transition-colors">
-                {language === 'en' ? 'Features' : 'Возможности'}
-              </a>
-              <a href="#pricing" className="text-white/80 hover:text-cyan-400 transition-colors">
-                {language === 'en' ? 'Pricing' : 'Цены'}
-              </a>
-              <a href="#contact" className="text-white/80 hover:text-cyan-400 transition-colors">
-                {language === 'en' ? 'Contact' : 'Контакты'}
-              </a>
+            
+            <div className="flex items-center space-x-4 sm:space-x-8">
+              <div className="hidden sm:flex items-center space-x-6 sm:space-x-8">
+                <a href="#features" className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base">
+                  {language === 'en' ? 'Features' : 'Возможности'}
+                </a>
+                <a href="#pricing" className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base">
+                  {language === 'en' ? 'Pricing' : 'Цены'}
+                </a>
+                <a href="#contact" className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base">
+                  {language === 'en' ? 'Contact' : 'Контакты'}
+                </a>
+              </div>
               
               {/* Language Switcher */}
               <div className="relative">
@@ -275,24 +283,24 @@ export default function Home() {
                     e.stopPropagation();
                     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
                   }}
-                  className="flex items-center space-x-2 px-3 py-2 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors"
+                  className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors"
                 >
-                  <Languages className="w-4 h-4" />
-                  <span className="text-sm font-medium">{language.toUpperCase()}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${isLanguageDropdownOpen ? 'rotate-180' : ''}`} />
+                  <Languages className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="text-xs sm:text-sm font-medium">{language.toUpperCase()}</span>
+                  <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${isLanguageDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {isLanguageDropdownOpen && (
                   <div 
                     onClick={(e) => e.stopPropagation()}
-                    className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-xl border border-white/20 rounded-lg overflow-hidden min-w-[120px] z-50"
+                    className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-xl border border-white/20 rounded-lg overflow-hidden min-w-[100px] sm:min-w-[120px] z-50"
                   >
                     <button
                       onClick={() => {
                         setLanguage('en');
                         setIsLanguageDropdownOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-left text-sm transition-colors hover:bg-white/10 ${
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm transition-colors hover:bg-white/10 ${
                         language === 'en' ? 'text-cyan-400 bg-cyan-400/20' : 'text-white'
                       }`}
                     >
@@ -303,7 +311,7 @@ export default function Home() {
                         setLanguage('ru');
                         setIsLanguageDropdownOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-left text-sm transition-colors hover:bg-white/10 ${
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-left text-xs sm:text-sm transition-colors hover:bg-white/10 ${
                         language === 'ru' ? 'text-cyan-400 bg-cyan-400/20' : 'text-white'
                       }`}
                     >
@@ -312,24 +320,65 @@ export default function Home() {
                   </div>
                 )}
               </div>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                }}
+                className="sm:hidden p-2 text-white/80 hover:text-white transition-colors"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
             </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="sm:hidden mt-4 pt-4 border-t border-white/10">
+              <div className="flex flex-col space-y-4">
+                <a 
+                  href="#features" 
+                  className="text-white/80 hover:text-cyan-400 transition-colors text-base py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {language === 'en' ? 'Features' : 'Возможности'}
+                </a>
+                <a 
+                  href="#pricing" 
+                  className="text-white/80 hover:text-cyan-400 transition-colors text-base py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {language === 'en' ? 'Pricing' : 'Цены'}
+                </a>
+                <a 
+                  href="#contact" 
+                  className="text-white/80 hover:text-cyan-400 transition-colors text-base py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {language === 'en' ? 'Contact' : 'Контакты'}
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
-        <div className="text-center max-w-6xl mx-auto">
+      <section className="relative z-10 pt-20 pb-16 px-6 min-h-[90vh] flex items-center">
+        <div className="text-center max-w-6xl mx-auto w-full">
           {/* Launch Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-8" role="banner">
+          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-6 sm:mb-8" role="banner">
             <Megaphone className="w-4 h-4 text-cyan-400 mr-2" aria-hidden="true" />
-            <span className="text-cyan-400 font-semibold">
+            <span className="text-cyan-400 font-semibold text-sm">
               {language === 'en' ? 'AI Business Networking' : 'AI бизнес-нетворкинг'}
             </span>
           </div>
 
           {/* Main Title - H1 for SEO */}
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight">
             {language === 'en' ? (
               <>
                 Your{" "}
@@ -350,7 +399,7 @@ export default function Home() {
           </h1>
 
           {/* Subtitle - SEO-optimized description */}
-          <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-4xl mx-auto leading-relaxed" role="doc-subtitle">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4" role="doc-subtitle">
             {language === 'en' 
               ? "AI-powered agent that discovers, connects, and converts your ideal customers, partners, and business contacts on Threads. Automatically generates and posts relevant comments to build relationships and unlock opportunities."
               : "AI-агент, который обнаруживает, соединяет и конвертирует ваших идеальных клиентов, партнеров и бизнес-контакты в Threads. Автоматически генерирует и публикует релевантные комментарии для построения отношений и открытия возможностей."
@@ -358,7 +407,7 @@ export default function Home() {
           </p>
 
           {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12" role="list">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4" role="list">
             {(language === 'en' ? [
               { icon: Target, text: "Contact Discovery" },
               { icon: MessageCircle, text: "Auto-Commenting" },
@@ -370,42 +419,42 @@ export default function Home() {
             ]).map((feature, index) => (
               <div 
                 key={index}
-                className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full"
+                className="flex items-center space-x-2 px-3 sm:px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full"
                 role="listitem"
               >
-                <feature.icon className="w-5 h-5 text-cyan-400" aria-hidden="true" />
-                <span className="text-white font-medium">{feature.text}</span>
+                <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" aria-hidden="true" />
+                <span className="text-white font-medium text-sm sm:text-base">{feature.text}</span>
               </div>
             ))}
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 sm:mb-8 px-4">
             <button 
               onClick={() => setIsPaymentModalOpen(true)}
-              className="group relative px-12 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105"
+              className="group relative px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-base sm:text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
               aria-label={language === 'en' ? 'Start Free Trial of ThreadsHelper' : 'Начать бесплатный пробный период ThreadsHelper'}
             >
-              <div className="flex items-center space-x-3">
-                <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
+              <div className="flex items-center justify-center space-x-3">
+                <Rocket className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
                 <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
               </div>
             </button>
             
             <a 
               href="#features"
-              className="group px-8 py-4 border-2 border-white/30 text-white font-medium text-lg rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300"
+              className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/30 text-white font-medium text-base sm:text-lg rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 w-full sm:w-auto"
               aria-label={language === 'en' ? 'Learn how ThreadsHelper works' : 'Узнать, как работает ThreadsHelper'}
             >
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-center space-x-3">
                 <span>{language === 'en' ? 'See How It Works' : 'Как это работает'}</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </div>
             </a>
           </div>
 
           {/* Social Proof */}
-          <p className="text-white/60 text-sm md:text-base">
+          <p className="text-white/60 text-sm sm:text-base mb-8 sm:mb-12 px-4">
             {language === 'en' 
               ? "Join 2,500+ businesses already building valuable networks with ThreadsHelper"
               : "Присоединяйтесь к 2 500+ бизнесам, которые уже строят ценные сети с ThreadsHelper"
@@ -413,31 +462,31 @@ export default function Home() {
           </p>
 
           {/* Value Proposition */}
-          <div className="mt-12 flex items-center justify-center space-x-6 text-white/60" role="list">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-white/60 px-4" role="list">
             <div className="flex items-center space-x-2" role="listitem">
-              <Shield className="w-5 h-5 text-green-400" aria-hidden="true" />
-              <span className="text-sm">{language === 'en' ? 'No Spam' : 'Без спама'}</span>
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" aria-hidden="true" />
+              <span className="text-xs sm:text-sm">{language === 'en' ? 'No Spam' : 'Без спама'}</span>
             </div>
             <div className="flex items-center space-x-2" role="listitem">
-              <MessageCircle className="w-5 h-5 text-blue-400" aria-hidden="true" />
-              <span className="text-sm">{language === 'en' ? 'Auto-Comments' : 'Авто-комментарии'}</span>
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" aria-hidden="true" />
+              <span className="text-xs sm:text-sm">{language === 'en' ? 'Auto-Comments' : 'Авто-комментарии'}</span>
             </div>
             <div className="flex items-center space-x-2" role="listitem">
-              <BarChart3 className="w-5 h-5 text-purple-400" aria-hidden="true" />
-              <span className="text-sm">{language === 'en' ? 'Measurable' : 'Измеримо'}</span>
+              <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" aria-hidden="true" />
+              <span className="text-xs sm:text-sm">{language === 'en' ? 'Measurable' : 'Измеримо'}</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="relative z-10 py-20 px-6">
+      <section id="features" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <header className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <header className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               {language === 'en' ? 'How ThreadsHelper Discovers & Connects' : 'Как ThreadsHelper находит и соединяет'}
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto px-4">
               {language === 'en' 
                 ? "Advanced AI technology that finds, analyzes, and automatically engages with your ideal customers, partners, and business contacts through intelligent comment generation"
                 : "Продвинутая AI-технология, которая находит, анализирует и автоматически взаимодействует с идеальными клиентами, партнерами и бизнес-контактами через интеллектуальную генерацию комментариев"
@@ -445,17 +494,17 @@ export default function Home() {
             </p>
           </header>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <article 
                 key={index}
-                className="group p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="group p-4 sm:p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105"
               >
                 <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-10 h-10 text-cyan-400" aria-hidden="true" />
+                  <feature.icon className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-400" aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-white/70 leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-3">{feature.title}</h3>
+                <p className="text-white/70 leading-relaxed text-sm sm:text-base">{feature.description}</p>
               </article>
             ))}
           </div>
@@ -463,27 +512,27 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="relative z-10 py-20 px-6 bg-gradient-to-r from-black/20 to-transparent">
+      <section className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-r from-black/20 to-transparent">
         <div className="max-w-7xl mx-auto">
-          <header className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <header className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               {language === 'en' ? 'Proven Networking Results' : 'Доказанные результаты нетворкинга'}
             </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto px-4">
               {language === 'en' 
                 ? "Real businesses building valuable connections and discovering new opportunities with ThreadsHelper"
                 : "Реальные бизнесы строят ценные связи и обнаруживают новые возможности с ThreadsHelper"
               }
             </p>
           </header>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
             {stats.map((stat, index) => (
-              <div key={index} className="p-6" role="region" aria-labelledby={`stat-${index}`}>
+              <div key={index} className="p-4 sm:p-6" role="region" aria-labelledby={`stat-${index}`}>
                 <div className="flex justify-center mb-4">
-                  <stat.icon className="w-12 h-12 text-cyan-400" aria-hidden="true" />
+                  <stat.icon className="w-10 h-10 sm:w-12 sm:h-12 text-cyan-400" aria-hidden="true" />
                 </div>
-                <div className="text-4xl font-bold text-white mb-2" id={`stat-${index}`}>{stat.number}</div>
-                <div className="text-white/70">{stat.label}</div>
+                <div className="text-3xl sm:text-4xl font-bold text-white mb-2" id={`stat-${index}`}>{stat.number}</div>
+                <div className="text-white/70 text-sm sm:text-base">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -491,13 +540,13 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="relative z-10 py-20 px-6">
+      <section id="pricing" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <header className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <header className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               {language === 'en' ? 'Simple, Transparent Pricing' : 'Простые, прозрачные цены'}
             </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto px-4">
               {language === 'en' 
                 ? "Choose the plan that fits your business size and customer acquisition goals"
                 : "Выберите план, который подходит размеру вашего бизнеса и целям привлечения клиентов"
@@ -505,39 +554,39 @@ export default function Home() {
             </p>
           </header>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
             {plans.map((plan, index) => (
-              <div key={index} className={`relative bg-black/40 backdrop-blur-xl border ${plan.popular ? 'border-cyan-400 scale-105' : 'border-white/20'} rounded-2xl p-8 hover:bg-black/50 transition-all duration-300`}>
+              <div key={index} className={`relative bg-black/40 backdrop-blur-xl border ${plan.popular ? 'border-cyan-400 scale-105' : 'border-white/20'} rounded-2xl p-6 sm:p-8 hover:bg-black/50 transition-all duration-300`}>
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center space-x-1">
-                      <Star className="w-4 h-4" />
+                  <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium flex items-center space-x-1">
+                      <Star className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span>{language === 'en' ? 'Most Popular' : 'Популярный'}</span>
                     </div>
                   </div>
                 )}
                 
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <p className="text-white/70 text-sm mb-4">{plan.description}</p>
-                  <div className="flex items-baseline justify-center mb-6">
-                    <span className="text-4xl font-bold text-white">${plan.price}</span>
-                    <span className="text-white/60 ml-1">{plan.period}</span>
+                <div className="text-center mb-6 sm:mb-8">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                  <p className="text-white/70 text-xs sm:text-sm mb-4">{plan.description}</p>
+                  <div className="flex items-baseline justify-center mb-4 sm:mb-6">
+                    <span className="text-3xl sm:text-4xl font-bold text-white">${plan.price}</span>
+                    <span className="text-white/60 ml-1 text-sm sm:text-base">{plan.period}</span>
                   </div>
                 </div>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start space-x-3">
-                      <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-white/80 text-sm">{feature}</span>
+                    <li key={featureIndex} className="flex items-start space-x-2 sm:space-x-3">
+                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-white/80 text-xs sm:text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 <button 
                   onClick={() => setIsPaymentModalOpen(true)}
-                  className={`w-full py-3 rounded-xl font-medium transition-all duration-300 ${
+                  className={`w-full py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base ${
                     plan.popular 
                       ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:shadow-lg hover:shadow-cyan-500/25' 
                       : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
@@ -552,12 +601,12 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 py-20 px-6">
+      <section className="relative z-10 py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             {language === 'en' ? 'Ready to Transform Your Business Networking?' : 'Готовы трансформировать ваш бизнес-нетворкинг?'}
           </h2>
-          <p className="text-lg text-white/80 mb-8">
+          <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 px-4">
             {language === 'en' 
               ? "Join thousands of businesses using AI to discover valuable contacts, build meaningful relationships, and unlock new opportunities through intelligent Threads networking."
               : "Присоединяйтесь к тысячам бизнесов, использующих AI для обнаружения ценных контактов, построения значимых отношений и открытия новых возможностей через интеллектуальный нетворкинг в Threads."
@@ -566,11 +615,11 @@ export default function Home() {
           
           <button 
             onClick={() => setIsPaymentModalOpen(true)}
-            className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105"
+            className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-base sm:text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105"
             aria-label={language === 'en' ? 'Start Free Trial - Transform Your Business Networking' : 'Начать бесплатный пробный период - Трансформируйте ваш бизнес-нетворкинг'}
           >
             <div className="flex items-center space-x-3">
-              <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
+              <Rocket className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
               <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
             </div>
           </button>
@@ -578,29 +627,29 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="relative z-10 border-t border-white/10 py-12 px-6">
+      <footer id="contact" className="relative z-10 border-t border-white/10 py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-6 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                <Bot className="w-5 h-5 text-white" aria-hidden="true" />
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-0">
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
+                <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 ThreadsHelper
               </span>
             </div>
             
-            <nav className="flex items-center space-x-8">
+            <nav className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
               <a 
                 href="mailto:support@threadshelper.com" 
-                className="text-white/60 hover:text-cyan-400 transition-colors"
+                className="text-white/60 hover:text-cyan-400 transition-colors text-sm sm:text-base"
                 aria-label={language === 'en' ? 'Contact ThreadsHelper Support' : 'Связаться с поддержкой ThreadsHelper'}
               >
                 support@threadshelper.com
               </a>
               <a 
                 href="#features" 
-                className="text-white/60 hover:text-cyan-400 transition-colors"
+                className="text-white/60 hover:text-cyan-400 transition-colors text-sm sm:text-base"
                 aria-label={language === 'en' ? 'View ThreadsHelper Features' : 'Посмотреть возможности ThreadsHelper'}
               >
                 {language === 'en' ? 'Features' : 'Возможности'}
@@ -608,8 +657,8 @@ export default function Home() {
             </nav>
           </div>
           
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/60">
-            <p>&copy; 2025 ThreadsHelper. {language === 'en' ? 'All rights reserved.' : 'Все права защищены.'}</p>
+          <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10 text-center text-white/60">
+            <p className="text-sm sm:text-base">&copy; 2025 ThreadsHelper. {language === 'en' ? 'All rights reserved.' : 'Все права защищены.'}</p>
           </div>
         </div>
       </footer>
@@ -617,39 +666,39 @@ export default function Home() {
       {/* Payment Modal */}
       {isPaymentModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-black/80 backdrop-blur-xl border border-white/20 rounded-2xl p-8 max-w-md w-full">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold text-white">
+          <div className="bg-black/80 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-6 md:p-8 max-w-md w-full mx-4">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                 {language === 'en' ? 'Start Your Free Trial' : 'Начать бесплатный пробный период'}
               </h3>
               <button 
                 onClick={() => setIsPaymentModalOpen(false)}
                 className="text-white/60 hover:text-white transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
             
-            <div className="mb-6">
-              <div className="text-3xl font-bold text-white mb-2">
+            <div className="mb-4 sm:mb-6">
+              <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 {language === 'en' ? 'Free' : 'Бесплатно'}
               </div>
-              <div className="text-white/70">
+              <div className="text-white/70 text-sm sm:text-base">
                 {language === 'en' ? '14-day free trial' : '14-дневный бесплатный пробный период'}
               </div>
-              <div className="text-cyan-400 text-sm">
+              <div className="text-cyan-400 text-xs sm:text-sm">
                 {language === 'en' ? 'No credit card required' : 'Кредитная карта не требуется'}
               </div>
             </div>
 
             <div className="space-y-4">
-              <button className="w-full flex items-center justify-center space-x-3 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all">
-                <Rocket className="w-5 h-5" />
+              <button className="w-full flex items-center justify-center space-x-3 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-sm sm:text-base">
+                <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
               </button>
             </div>
 
-            <div className="mt-6 text-center text-white/60 text-sm">
+            <div className="mt-4 sm:mt-6 text-center text-white/60 text-xs sm:text-sm">
               <span>
                 {language === 'en' ? 'No commitment • Cancel anytime' : 'Никаких обязательств • Отменить в любое время'}
               </span>
