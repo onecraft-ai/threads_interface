@@ -74,8 +74,8 @@ export default function Home() {
     },
     {
       icon: Target,
-      title: "Precision Targeting & Networking",
-      description: "Identifies key decision makers, potential partners, and qualified leads based on their activity and interests"
+      title: "Automated Comment Generation",
+      description: "Automatically suggests and posts relevant, contextual comments that drive engagement and build relationships with key contacts"
     },
     {
       icon: UserCheck,
@@ -95,8 +95,8 @@ export default function Home() {
     },
     {
       icon: Target,
-      title: "Точный таргетинг и нетворкинг",
-      description: "Выявляет ключевых лиц, принимающих решения, потенциальных партнеров и квалифицированных лидов на основе их активности и интересов"
+      title: "Автоматическая генерация комментариев",
+      description: "Автоматически предлагает и публикует релевантные, контекстные комментарии, которые повышают вовлеченность и строят отношения с ключевыми контактами"
     },
     {
       icon: UserCheck,
@@ -118,7 +118,7 @@ export default function Home() {
       description: "Perfect for small businesses",
       features: [
         "Up to 100 contact discoveries/month",
-        "Basic contact filtering",
+        "Basic auto-commenting (review mode)",
         "Standard networking analytics",
         "Email support"
       ],
@@ -131,7 +131,7 @@ export default function Home() {
       description: "For growing businesses",
       features: [
         "Up to 500 contact discoveries/month",
-        "Advanced contact profiling & targeting",
+        "Advanced auto-commenting & suggestions",
         "Real-time networking insights",
         "Priority support",
         "Custom outreach templates"
@@ -145,7 +145,7 @@ export default function Home() {
       description: "For large organizations",
       features: [
         "Unlimited contact discovery",
-        "Multi-team collaboration",
+        "Full auto-commenting automation",
         "Advanced relationship mapping",
         "Dedicated account manager",
         "Custom CRM integrations"
@@ -160,7 +160,7 @@ export default function Home() {
       description: "Идеально для малого бизнеса",
       features: [
         "До 100 обнаружений контактов/месяц",
-        "Базовая фильтрация контактов",
+        "Базовое авто-комментирование (режим проверки)",
         "Стандартная аналитика нетворкинга",
         "Email поддержка"
       ],
@@ -173,7 +173,7 @@ export default function Home() {
       description: "Для растущего бизнеса",
       features: [
         "До 500 обнаружений контактов/месяц",
-        "Продвинутое профилирование и таргетинг",
+        "Продвинутое авто-комментирование и предложения",
         "Аналитика нетворкинга в реальном времени",
         "Приоритетная поддержка",
         "Кастомные шаблоны для связи"
@@ -187,7 +187,7 @@ export default function Home() {
       description: "Для крупных организаций",
       features: [
         "Неограниченный поиск контактов",
-        "Командное сотрудничество",
+        "Полная автоматизация комментирования",
         "Продвинутое картирование отношений",
         "Персональный менеджер",
         "Интеграции с CRM"
@@ -315,8 +315,8 @@ export default function Home() {
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-4xl mx-auto leading-relaxed">
             {language === 'en' 
-              ? "AI-powered agent that discovers, connects, and converts your ideal customers, partners, and business contacts on Threads. Transform social conversations into business opportunities through intelligent networking."
-              : "AI-агент, который обнаруживает, соединяет и конвертирует ваших идеальных клиентов, партнеров и бизнес-контакты в Threads. Превращайте социальные разговоры в бизнес-возможности через интеллектуальный нетворкинг."
+              ? "AI-powered agent that discovers, connects, and converts your ideal customers, partners, and business contacts on Threads. Automatically generates and posts relevant comments to build relationships and unlock opportunities."
+              : "AI-агент, который обнаруживает, соединяет и конвертирует ваших идеальных клиентов, партнеров и бизнес-контакты в Threads. Автоматически генерирует и публикует релевантные комментарии для построения отношений и открытия возможностей."
             }
           </p>
 
@@ -324,11 +324,11 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {(language === 'en' ? [
               { icon: Target, text: "Contact Discovery" },
-              { icon: MessageCircle, text: "Smart Networking" },
+              { icon: MessageCircle, text: "Auto-Commenting" },
               { icon: BarChart3, text: "Business Analytics" }
             ] : [
               { icon: Target, text: "Поиск контактов" },
-              { icon: MessageCircle, text: "Умный нетворкинг" },
+              { icon: MessageCircle, text: "Авто-комментирование" },
               { icon: BarChart3, text: "Бизнес-аналитика" }
             ]).map((feature, index) => (
               <div 
@@ -379,8 +379,8 @@ export default function Home() {
               <span className="text-sm">{language === 'en' ? 'No Spam' : 'Без спама'}</span>
             </div>
             <div className="flex items-center space-x-2">
-              <UserCheck className="w-5 h-5 text-blue-400" />
-              <span className="text-sm">{language === 'en' ? 'Authentic' : 'Подлинно'}</span>
+              <MessageCircle className="w-5 h-5 text-blue-400" />
+              <span className="text-sm">{language === 'en' ? 'Auto-Comments' : 'Авто-комментарии'}</span>
             </div>
             <div className="flex items-center space-x-2">
               <BarChart3 className="w-5 h-5 text-purple-400" />
@@ -399,8 +399,8 @@ export default function Home() {
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {language === 'en' 
-                ? "Advanced AI technology that finds, analyzes, and connects you with your ideal customers, partners, and business contacts on Threads"
-                : "Продвинутая AI-технология, которая находит, анализирует и соединяет вас с идеальными клиентами, партнерами и бизнес-контактами в Threads"
+                ? "Advanced AI technology that finds, analyzes, and automatically engages with your ideal customers, partners, and business contacts through intelligent comment generation"
+                : "Продвинутая AI-технология, которая находит, анализирует и автоматически взаимодействует с идеальными клиентами, партнерами и бизнес-контактами через интеллектуальную генерацию комментариев"
               }
             </p>
           </div>
