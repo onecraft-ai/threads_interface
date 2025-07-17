@@ -14,8 +14,92 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ThreadsHelper - Enhance Your Threads Experience",
-  description: "Powerful browser extension that enhances your Threads experience with advanced features and improved workflow.",
+  title: "ThreadsHelper - AI-Powered Business Networking & Contact Discovery for Threads",
+  description: "Transform your Threads networking with AI-powered contact discovery, automated commenting, and intelligent business relationship building. Find customers, partners, and valuable contacts automatically.",
+  keywords: [
+    "Threads AI agent",
+    "business networking automation",
+    "contact discovery",
+    "automated commenting",
+    "social media AI",
+    "business relationship building",
+    "Threads marketing tool",
+    "AI customer acquisition",
+    "social selling automation",
+    "networking software",
+    "contact finder",
+    "business development AI"
+  ],
+  authors: [{ name: "ThreadsHelper Team" }],
+  creator: "ThreadsHelper",
+  publisher: "ThreadsHelper",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://threadshelper.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en",
+      "ru-RU": "/ru",
+    },
+  },
+  openGraph: {
+    title: "ThreadsHelper - AI Business Networking & Contact Discovery",
+    description: "AI-powered agent that discovers valuable contacts, automates commenting, and builds business relationships on Threads. Transform social conversations into opportunities.",
+    url: "https://threadshelper.com",
+    siteName: "ThreadsHelper",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ThreadsHelper - AI Business Networking Tool",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ThreadsHelper - AI Business Networking & Contact Discovery",
+    description: "AI-powered agent for automated contact discovery and business networking on Threads. Build relationships through intelligent comment automation.",
+    images: ["/twitter-image.jpg"],
+    creator: "@ThreadsHelper",
+    site: "@ThreadsHelper",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+  verification: {
+    google: "google-site-verification-placeholder",
+    yandex: "yandex-verification-placeholder",
+  },
+  other: {
+    "application-name": "ThreadsHelper",
+    "msapplication-TileColor": "#00a8ff",
+    "theme-color": "#00a8ff",
+    "robots": "index, follow",
+    "revisit-after": "7 days",
+  },
 };
 
 export default function RootLayout({
@@ -25,6 +109,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "ThreadsHelper",
+              "description": "AI-powered business networking agent that discovers contacts, automates commenting, and builds relationships on Threads.",
+              "url": "https://threadshelper.com",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "49",
+                "priceCurrency": "USD",
+                "priceValidUntil": "2025-12-31"
+              },
+              "author": {
+                "@type": "Organization",
+                "name": "ThreadsHelper Team"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "247"
+              },
+              "featureList": [
+                "AI-powered contact discovery",
+                "Automated comment generation",
+                "Business relationship building",
+                "Networking analytics",
+                "CRM integration",
+                "Real-time insights"
+              ]
+            })
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

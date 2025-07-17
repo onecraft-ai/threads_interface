@@ -2,6 +2,7 @@
 
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getSEOData, generateStructuredData } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { 
   Brain, 
@@ -44,6 +45,42 @@ export default function Home() {
     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
     setDaysUntilLaunch(Math.max(0, daysDiff));
   }, []);
+
+  // Update document metadata based on language
+  useEffect(() => {
+    const seoData = getSEOData(language);
+    
+    // Update title
+    document.title = seoData.title;
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', seoData.description);
+    }
+    
+    // Update keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', seoData.keywords.join(', '));
+    
+    // Update structured data
+    const structuredData = generateStructuredData(language);
+    let structuredDataScript = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredDataScript) {
+      structuredDataScript = document.createElement('script');
+      structuredDataScript.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(structuredDataScript);
+    }
+    structuredDataScript.textContent = JSON.stringify(structuredData);
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = language === 'ru' ? 'ru' : 'en';
+  }, [language]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -217,7 +254,7 @@ export default function Home() {
                 <Bot className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                ThreadsAgent
+                ThreadsHelper
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -281,17 +318,17 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-6">
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
         <div className="text-center max-w-6xl mx-auto">
           {/* Launch Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-8">
-            <Megaphone className="w-4 h-4 text-cyan-400 mr-2" />
+          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-8" role="banner">
+            <Megaphone className="w-4 h-4 text-cyan-400 mr-2" aria-hidden="true" />
             <span className="text-cyan-400 font-semibold">
               {language === 'en' ? 'AI Business Networking' : 'AI бизнес-нетворкинг'}
             </span>
           </div>
 
-          {/* Main Title */}
+          {/* Main Title - H1 for SEO */}
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight">
             {language === 'en' ? (
               <>
@@ -312,8 +349,8 @@ export default function Home() {
             )}
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-4xl mx-auto leading-relaxed">
+          {/* Subtitle - SEO-optimized description */}
+          <p className="text-xl md:text-2xl text-white/80 mb-12 max-w-4xl mx-auto leading-relaxed" role="doc-subtitle">
             {language === 'en' 
               ? "AI-powered agent that discovers, connects, and converts your ideal customers, partners, and business contacts on Threads. Automatically generates and posts relevant comments to build relationships and unlock opportunities."
               : "AI-агент, который обнаруживает, соединяет и конвертирует ваших идеальных клиентов, партнеров и бизнес-контакты в Threads. Автоматически генерирует и публикует релевантные комментарии для построения отношений и открытия возможностей."
@@ -321,7 +358,7 @@ export default function Home() {
           </p>
 
           {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-4 mb-12" role="list">
             {(language === 'en' ? [
               { icon: Target, text: "Contact Discovery" },
               { icon: MessageCircle, text: "Auto-Commenting" },
@@ -334,8 +371,9 @@ export default function Home() {
               <div 
                 key={index}
                 className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full"
+                role="listitem"
               >
-                <feature.icon className="w-5 h-5 text-cyan-400" />
+                <feature.icon className="w-5 h-5 text-cyan-400" aria-hidden="true" />
                 <span className="text-white font-medium">{feature.text}</span>
               </div>
             ))}
@@ -346,9 +384,10 @@ export default function Home() {
             <button 
               onClick={() => setIsPaymentModalOpen(true)}
               className="group relative px-12 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105"
+              aria-label={language === 'en' ? 'Start Free Trial of ThreadsHelper' : 'Начать бесплатный пробный период ThreadsHelper'}
             >
               <div className="flex items-center space-x-3">
-                <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" />
+                <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
                 <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
               </div>
             </button>
@@ -356,10 +395,11 @@ export default function Home() {
             <a 
               href="#features"
               className="group px-8 py-4 border-2 border-white/30 text-white font-medium text-lg rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300"
+              aria-label={language === 'en' ? 'Learn how ThreadsHelper works' : 'Узнать, как работает ThreadsHelper'}
             >
               <div className="flex items-center space-x-3">
                 <span>{language === 'en' ? 'See How It Works' : 'Как это работает'}</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </div>
             </a>
           </div>
@@ -367,35 +407,35 @@ export default function Home() {
           {/* Social Proof */}
           <p className="text-white/60 text-sm md:text-base">
             {language === 'en' 
-              ? "Join 2,500+ businesses already building valuable networks with ThreadsAgent"
-              : "Присоединяйтесь к 2 500+ бизнесам, которые уже строят ценные сети с ThreadsAgent"
+              ? "Join 2,500+ businesses already building valuable networks with ThreadsHelper"
+              : "Присоединяйтесь к 2 500+ бизнесам, которые уже строят ценные сети с ThreadsHelper"
             }
           </p>
 
           {/* Value Proposition */}
-          <div className="mt-12 flex items-center justify-center space-x-6 text-white/60">
-            <div className="flex items-center space-x-2">
-              <Shield className="w-5 h-5 text-green-400" />
+          <div className="mt-12 flex items-center justify-center space-x-6 text-white/60" role="list">
+            <div className="flex items-center space-x-2" role="listitem">
+              <Shield className="w-5 h-5 text-green-400" aria-hidden="true" />
               <span className="text-sm">{language === 'en' ? 'No Spam' : 'Без спама'}</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <MessageCircle className="w-5 h-5 text-blue-400" />
+            <div className="flex items-center space-x-2" role="listitem">
+              <MessageCircle className="w-5 h-5 text-blue-400" aria-hidden="true" />
               <span className="text-sm">{language === 'en' ? 'Auto-Comments' : 'Авто-комментарии'}</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <BarChart3 className="w-5 h-5 text-purple-400" />
+            <div className="flex items-center space-x-2" role="listitem">
+              <BarChart3 className="w-5 h-5 text-purple-400" aria-hidden="true" />
               <span className="text-sm">{language === 'en' ? 'Measurable' : 'Измеримо'}</span>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Features Section */}
-      <div id="features" className="relative z-10 py-20 px-6">
+      <section id="features" className="relative z-10 py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <header className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {language === 'en' ? 'How ThreadsAgent Discovers & Connects' : 'Как ThreadsAgent находит и соединяет'}
+              {language === 'en' ? 'How ThreadsHelper Discovers & Connects' : 'Как ThreadsHelper находит и соединяет'}
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {language === 'en' 
@@ -403,57 +443,57 @@ export default function Home() {
                 : "Продвинутая AI-технология, которая находит, анализирует и автоматически взаимодействует с идеальными клиентами, партнерами и бизнес-контактами через интеллектуальную генерацию комментариев"
               }
             </p>
-          </div>
+          </header>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div 
+              <article 
                 key={index}
                 className="group p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105"
               >
                 <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-10 h-10 text-cyan-400" />
+                  <feature.icon className="w-10 h-10 text-cyan-400" aria-hidden="true" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
                 <p className="text-white/70 leading-relaxed">{feature.description}</p>
-              </div>
+              </article>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Stats Section */}
-      <div className="relative z-10 py-20 px-6 bg-gradient-to-r from-black/20 to-transparent">
+      <section className="relative z-10 py-20 px-6 bg-gradient-to-r from-black/20 to-transparent">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+          <header className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               {language === 'en' ? 'Proven Networking Results' : 'Доказанные результаты нетворкинга'}
             </h2>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
               {language === 'en' 
-                ? "Real businesses building valuable connections and discovering new opportunities with ThreadsAgent"
-                : "Реальные бизнесы строят ценные связи и обнаруживают новые возможности с ThreadsAgent"
+                ? "Real businesses building valuable connections and discovering new opportunities with ThreadsHelper"
+                : "Реальные бизнесы строят ценные связи и обнаруживают новые возможности с ThreadsHelper"
               }
             </p>
-          </div>
+          </header>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {stats.map((stat, index) => (
-              <div key={index} className="p-6">
+              <div key={index} className="p-6" role="region" aria-labelledby={`stat-${index}`}>
                 <div className="flex justify-center mb-4">
-                  <stat.icon className="w-12 h-12 text-cyan-400" />
+                  <stat.icon className="w-12 h-12 text-cyan-400" aria-hidden="true" />
                 </div>
-                <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
+                <div className="text-4xl font-bold text-white mb-2" id={`stat-${index}`}>{stat.number}</div>
                 <div className="text-white/70">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Pricing Section */}
-      <div id="pricing" className="relative z-10 py-20 px-6">
+      <section id="pricing" className="relative z-10 py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <header className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               {language === 'en' ? 'Simple, Transparent Pricing' : 'Простые, прозрачные цены'}
             </h2>
@@ -463,7 +503,7 @@ export default function Home() {
                 : "Выберите план, который подходит размеру вашего бизнеса и целям привлечения клиентов"
               }
             </p>
-          </div>
+          </header>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {plans.map((plan, index) => (
@@ -509,10 +549,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* CTA Section */}
-      <div className="relative z-10 py-20 px-6">
+      <section className="relative z-10 py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             {language === 'en' ? 'Ready to Transform Your Business Networking?' : 'Готовы трансформировать ваш бизнес-нетворкинг?'}
@@ -527,14 +567,15 @@ export default function Home() {
           <button 
             onClick={() => setIsPaymentModalOpen(true)}
             className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105"
+            aria-label={language === 'en' ? 'Start Free Trial - Transform Your Business Networking' : 'Начать бесплатный пробный период - Трансформируйте ваш бизнес-нетворкинг'}
           >
             <div className="flex items-center space-x-3">
-              <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" />
+              <Rocket className="w-6 h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
               <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
             </div>
           </button>
         </div>
-      </div>
+      </section>
 
       {/* Footer */}
       <footer id="contact" className="relative z-10 border-t border-white/10 py-12 px-6">
@@ -542,25 +583,33 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-6 md:mb-0">
               <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full flex items-center justify-center">
-                <Bot className="w-5 h-5 text-white" />
+                <Bot className="w-5 h-5 text-white" aria-hidden="true" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                ThreadsAgent
+                ThreadsHelper
               </span>
             </div>
             
-            <div className="flex items-center space-x-8">
-              <a href="mailto:support@threadsagent.com" className="text-white/60 hover:text-cyan-400 transition-colors">
-                support@threadsagent.com
+            <nav className="flex items-center space-x-8">
+              <a 
+                href="mailto:support@threadshelper.com" 
+                className="text-white/60 hover:text-cyan-400 transition-colors"
+                aria-label={language === 'en' ? 'Contact ThreadsHelper Support' : 'Связаться с поддержкой ThreadsHelper'}
+              >
+                support@threadshelper.com
               </a>
-              <a href="#features" className="text-white/60 hover:text-cyan-400 transition-colors">
+              <a 
+                href="#features" 
+                className="text-white/60 hover:text-cyan-400 transition-colors"
+                aria-label={language === 'en' ? 'View ThreadsHelper Features' : 'Посмотреть возможности ThreadsHelper'}
+              >
                 {language === 'en' ? 'Features' : 'Возможности'}
               </a>
-            </div>
+            </nav>
           </div>
           
           <div className="mt-8 pt-8 border-t border-white/10 text-center text-white/60">
-            <p>&copy; 2025 ThreadsAgent. {language === 'en' ? 'All rights reserved.' : 'Все права защищены.'}</p>
+            <p>&copy; 2025 ThreadsHelper. {language === 'en' ? 'All rights reserved.' : 'Все права защищены.'}</p>
           </div>
         </div>
       </footer>
