@@ -1,0 +1,289 @@
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+}
+
+#bh_pricing_table {
+  background: transparent !important;
+  color: white;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.bh_plans {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 2rem !important;
+  margin: 0 auto !important;
+  padding: 2rem 1rem 1rem !important;
+  max-width: 1200px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.bh_plan {
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 1.5rem !important;
+  padding: 2.5rem 2rem !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.bh_plan:hover {
+  background: rgba(0, 0, 0, 0.4) !important;
+  transform: translateY(-8px) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4) !important;
+}
+
+.bh_plan:nth-child(2) {
+  border: 2px solid #06b6d4 !important;
+  background: rgba(6, 182, 212, 0.1) !important;
+  transform: scale(1.05) !important;
+  z-index: 2 !important;
+}
+
+.bh_plan:nth-child(2):hover {
+  transform: scale(1.05) translateY(-8px) !important;
+}
+
+.bh_plan:nth-child(2)::before {
+  content: "Most Popular" !important;
+  position: absolute !important;
+  top: -18px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6) !important;
+  color: white !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  z-index: 20 !important;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3) !important;
+  white-space: nowrap !important;
+}
+
+.bh_name {
+  color: white !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+  text-align: center !important;
+  letter-spacing: -0.025em !important;
+}
+
+.bh_description {
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  min-height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.bh_price {
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+  padding: 0.75rem 0 !important;
+}
+
+.bh_amount {
+  color: white !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  display: block !important;
+  letter-spacing: -0.05em !important;
+}
+
+.bh_interval {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 1rem !important;
+  margin-left: 0.25rem !important;
+  font-weight: 400 !important;
+}
+
+.bh_button {
+  width: calc(100% - 0px) !important;
+  max-width: 100% !important;
+  padding: 0.85rem 1.5rem !important;
+  border-radius: 1rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  display: block !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+  margin: 0 0 2rem 0 !important;
+  border: none !important;
+  color: white !important;
+  font-size: 1rem !important;
+  text-transform: none !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+.bh_plan:nth-child(1) .bh_button {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4) !important;
+}
+
+.bh_plan:nth-child(1) .bh_button:hover {
+  background: linear-gradient(135deg, #2563eb, #0891b2) !important;
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4) !important;
+}
+
+.bh_plan:nth-child(2) .bh_button {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.3) !important;
+}
+
+.bh_plan:nth-child(2) .bh_button:hover {
+  background: linear-gradient(135deg, #7c3aed, #db2777) !important;
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.5) !important;
+}
+
+.bh_plan:nth-child(3) .bh_button {
+  background: linear-gradient(135deg, #f97316, #ef4444) !important;
+}
+
+.bh_plan:nth-child(3) .bh_button:hover {
+  background: linear-gradient(135deg, #ea580c, #dc2626) !important;
+  box-shadow: 0 15px 35px rgba(249, 115, 22, 0.4) !important;
+}
+
+.bh_button:hover {
+  transform: translateY(-3px) !important;
+  color: white !important;
+}
+
+.bh_features {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-top: 1rem !important;
+}
+
+.bh_feature {
+  display: flex !important;
+  align-items: flex-start !important;
+  margin-bottom: 1.25rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  padding: 0.5rem 0 !important;
+}
+
+.bh_feature:last-child {
+  margin-bottom: 0 !important;
+}
+
+.bh_icon {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  color: #10b981 !important;
+  margin-right: 1rem !important;
+  margin-top: 0.125rem !important;
+  flex-shrink: 0 !important;
+  opacity: 0.9 !important;
+}
+
+.bh_feature span {
+  color: rgba(255, 255, 255, 0.85) !important;
+  flex: 1 !important;
+}
+
+.bh_feature span p {
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  line-height: 1.6 !important;
+}
+
+.bh_feature span strong {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.bh_feature span em {
+  color: #06b6d4 !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+}
+
+@media (max-width: 768px) {
+  .bh_plans {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 2rem 1rem 1rem !important;
+    overflow: visible !important;
+  }
+  
+  .bh_plan:nth-child(2) {
+    transform: none !important;
+    order: -1 !important;
+  }
+  
+  .bh_plan:nth-child(2):hover {
+    transform: translateY(-8px) !important;
+  }
+  
+  .bh_plan {
+    padding: 2rem 1.5rem !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+  }
+  
+  .bh_amount {
+    font-size: 2.5rem !important;
+  }
+  
+  .bh_name {
+    font-size: 1.5rem !important;
+  }
+  
+  .bh_description {
+    min-height: auto !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .bh_button {
+    padding: 0.75rem 1rem !important;
+    margin: 0 0 1.5rem 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .bh_plan {
+    padding: 1.5rem 1rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  .bh_button {
+    padding: 0.7rem 0.75rem !important;
+    margin: 0 0 1.25rem 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .bh_amount {
+    font-size: 2rem !important;
+  }
+  
+  .bh_name {
+    font-size: 1.25rem !important;
+  }
+} 

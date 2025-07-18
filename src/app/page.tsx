@@ -5,21 +5,15 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 import { getSEOData, generateStructuredData } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { 
-  Brain, 
   Zap, 
   Target,
   Sparkles,
-  CreditCard,
-  Bitcoin,
   X,
-  Check,
   Rocket,
   Users,
   TrendingUp,
   Globe,
-  Chrome,
   ArrowRight,
-  Star,
   Shield,
   Clock,
   ChevronDown,
@@ -39,6 +33,7 @@ export default function Home() {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [daysUntilLaunch, setDaysUntilLaunch] = useState(0);
+  const [cssUrl, setCssUrl] = useState('https://threadshelper.com/boathouse-styles.css');
 
   useEffect(() => {
     const launchDate = new Date('2025-08-10');
@@ -46,6 +41,12 @@ export default function Home() {
     const timeDiff = launchDate.getTime() - today.getTime();
     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
     setDaysUntilLaunch(Math.max(0, daysDiff));
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+      setCssUrl(`${window.location.protocol}//${window.location.host}/boathouse-styles.css`);
+    }
   }, []);
 
   // Update document metadata based on language
@@ -152,91 +153,7 @@ export default function Home() {
     }
   ];
 
-  const plans = language === 'en' ? [
-    {
-      name: "Starter",
-      price: 49,
-      period: "/month",
-      description: "Perfect for small businesses",
-      features: [
-        "Up to 100 contact discoveries/month",
-        "Basic auto-commenting (review mode)",
-        "Standard networking analytics",
-        "Email support"
-      ],
-      popular: false
-    },
-    {
-      name: "Professional",
-      price: 149,
-      period: "/month",
-      description: "For growing businesses",
-      features: [
-        "Up to 500 contact discoveries/month",
-        "Advanced auto-commenting & suggestions",
-        "Real-time networking insights",
-        "Priority support",
-        "Custom outreach templates"
-      ],
-      popular: true
-    },
-    {
-      name: "Enterprise",
-      price: 399,
-      period: "/month",
-      description: "For large organizations",
-      features: [
-        "Unlimited contact discovery",
-        "Full auto-commenting automation",
-        "Advanced relationship mapping",
-        "Dedicated account manager",
-        "Custom CRM integrations"
-      ],
-      popular: false
-    }
-  ] : [
-    {
-      name: "Starter",
-      price: 49,
-      period: "/месяц",
-      description: "Идеально для малого бизнеса",
-      features: [
-        "До 100 обнаружений контактов/месяц",
-        "Базовое авто-комментирование (режим проверки)",
-        "Стандартная аналитика нетворкинга",
-        "Email поддержка"
-      ],
-      popular: false
-    },
-    {
-      name: "Professional",
-      price: 149,
-      period: "/месяц",
-      description: "Для растущего бизнеса",
-      features: [
-        "До 500 обнаружений контактов/месяц",
-        "Продвинутое авто-комментирование и предложения",
-        "Аналитика нетворкинга в реальном времени",
-        "Приоритетная поддержка",
-        "Кастомные шаблоны для связи"
-      ],
-      popular: true
-    },
-    {
-      name: "Enterprise",
-      price: 399,
-      period: "/месяц",
-      description: "Для крупных организаций",
-      features: [
-        "Неограниченный поиск контактов",
-        "Полная автоматизация комментирования",
-        "Продвинутое картирование отношений",
-        "Персональный менеджер",
-        "Интеграции с CRM"
-      ],
-      popular: false
-    }
-  ];
+
 
   const stats = language === 'en' ? [
     { icon: Users, number: "2.5K+", label: "Active Users" },
@@ -367,10 +284,10 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 pt-20 pb-16 px-6 min-h-[90vh] flex items-center">
+      <section className="relative z-10 pt-36 sm:pt-40 md:pt-32 lg:pt-24 pb-16 px-6 min-h-[90vh] flex items-center">
         <div className="text-center max-w-6xl mx-auto w-full">
           {/* Launch Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-6 sm:mb-8" role="banner">
+          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-6 sm:mb-8 mt-8 sm:mt-12 md:mt-6 lg:mt-0" role="banner">
             <Megaphone className="w-4 h-4 text-cyan-400 mr-2" aria-hidden="true" />
             <span className="text-cyan-400 font-semibold text-sm">
               {language === 'en' ? 'AI Business Networking' : 'AI бизнес-нетворкинг'}
@@ -554,48 +471,13 @@ export default function Home() {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-            {plans.map((plan, index) => (
-              <div key={index} className={`relative bg-black/40 backdrop-blur-xl border ${plan.popular ? 'border-cyan-400 scale-105' : 'border-white/20'} rounded-2xl p-6 sm:p-8 hover:bg-black/50 transition-all duration-300`}>
-                {plan.popular && (
-                  <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium flex items-center space-x-1">
-                      <Star className="w-3 h-3 sm:w-4 sm:h-4" />
-                      <span>{language === 'en' ? 'Most Popular' : 'Популярный'}</span>
-                    </div>
-                  </div>
-                )}
-                
-                <div className="text-center mb-6 sm:mb-8">
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <p className="text-white/70 text-xs sm:text-sm mb-4">{plan.description}</p>
-                  <div className="flex items-baseline justify-center mb-4 sm:mb-6">
-                    <span className="text-3xl sm:text-4xl font-bold text-white">${plan.price}</span>
-                    <span className="text-white/60 ml-1 text-sm sm:text-base">{plan.period}</span>
-                  </div>
-                </div>
-
-                <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start space-x-2 sm:space-x-3">
-                      <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-white/80 text-xs sm:text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button 
-                  onClick={() => setIsPaymentModalOpen(true)}
-                  className={`w-full py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base ${
-                    plan.popular 
-                      ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:shadow-lg hover:shadow-cyan-500/25' 
-                      : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
-                  }`}
-                >
-                  {language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}
-                </button>
-              </div>
-            ))}
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-8 overflow-visible">
+            <iframe 
+              src={`https://my.boathouse.co/api/v1/pricingtableiframe?p=0bfc51c7-4c7a-4320-686e-08ddaec4447a&l=CREATEACCOUNTURL&s=${cssUrl}`}
+              frameBorder="0"
+              className="w-full h-[700px] rounded-lg"
+              title={language === 'en' ? 'ThreadsHelper Pricing Plans' : 'Планы цен ThreadsHelper'}
+            />
           </div>
         </div>
       </section>
@@ -653,6 +535,33 @@ export default function Home() {
                 aria-label={language === 'en' ? 'View ThreadsHelper Features' : 'Посмотреть возможности ThreadsHelper'}
               >
                 {language === 'en' ? 'Features' : 'Возможности'}
+              </a>
+              <a 
+                href="https://threads.fra1.digitaloceanspaces.com/Threads%20Helper%20Privacy%20Policy.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-cyan-400 transition-colors text-sm sm:text-base"
+                aria-label={language === 'en' ? 'View Privacy Policy' : 'Политика конфиденциальности'}
+              >
+                {language === 'en' ? 'Privacy Policy' : 'Политика конфиденциальности'}
+              </a>
+              <a 
+                href="https://threads.fra1.digitaloceanspaces.com/Threads%20Helper%20Terms%20of%20Use.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-cyan-400 transition-colors text-sm sm:text-base"
+                aria-label={language === 'en' ? 'View Terms of Use' : 'Условия использования'}
+              >
+                {language === 'en' ? 'Terms of Use' : 'Условия использования'}
+              </a>
+              <a 
+                href="https://threads.fra1.digitaloceanspaces.com/Threads%20Helper%20Refund%20Policy.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-cyan-400 transition-colors text-sm sm:text-base"
+                aria-label={language === 'en' ? 'View Refund Policy' : 'Политика возврата'}
+              >
+                {language === 'en' ? 'Refund Policy' : 'Политика возврата'}
               </a>
             </nav>
           </div>
