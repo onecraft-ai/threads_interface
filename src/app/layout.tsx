@@ -117,7 +117,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": "ThreadsHelper",
-              "description": "AI-powered business networking agent that discovers contacts, automates commenting, and builds relationships on Threads.",
+              "description": "AI-powered business intelligence platform that analyzes Threads conversations for market research, contact discovery, and networking insights.",
               "url": "https://threadshelper.com",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Web",
@@ -137,12 +137,12 @@ export default function RootLayout({
                 "reviewCount": "247"
               },
               "featureList": [
-                "AI-powered contact discovery",
-                "Automated comment generation",
-                "Business relationship building",
-                "Networking analytics",
-                "CRM integration",
-                "Real-time insights"
+                "AI-powered business intelligence",
+                "Market research analytics",
+                "Conversation insights analysis",
+                "Networking intelligence",
+                "Contact research tools",
+                "Business data visualization"
               ]
             })
           }}

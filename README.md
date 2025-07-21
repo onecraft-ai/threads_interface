@@ -1,23 +1,23 @@
 # ThreadsHelper
 
-ThreadsHelper is an AI-powered business networking and contact discovery platform that transforms your Threads experience into a powerful relationship-building tool. Discover valuable contacts, automate meaningful engagement, and build business relationships through intelligent networking.
+ThreadsHelper is an AI-powered business intelligence and market research platform that transforms your Threads conversations into actionable business insights. Analyze discussions, research contacts, identify market opportunities, and make data-driven networking decisions through intelligent conversation analysis.
 
 ## Features
 
-- **AI-Powered Contact Discovery**: Automatically finds and identifies your ideal customers, partners, and business contacts across Threads
-- **Automated Comment Generation**: Intelligently creates and posts relevant, contextual comments that drive engagement and build relationships
-- **Smart Business Networking**: Advanced targeting system that identifies key decision makers and potential partners based on activity and interests
-- **Relationship Building Analytics**: Track contact discovery, engagement metrics, and business opportunities generated through your networking efforts
-- **CRM Integration**: Seamlessly integrates with popular CRM systems to manage your discovered contacts and relationships
-- **Multi-language Support**: Available in English and Russian for global business networking
+- **AI-Powered Market Research**: Automatically analyzes and identifies market trends, customer needs, and business opportunities across Threads conversations
+- **Business Intelligence Analytics**: Comprehensively analyzes conversation patterns, sentiment, and networking dynamics to provide actionable business insights
+- **Advanced Contact Research**: Professional research tools that help you discover and analyze potential customers, partners, and industry contacts
+- **Networking Intelligence Dashboard**: Track conversation analytics, relationship mapping, and business opportunities with detailed reporting
+- **Competitive Intelligence**: Monitor industry discussions, competitor mentions, and market positioning insights
+- **Multi-language Support**: Available in English and Russian for global business research
 
 ## Business Benefits
 
-- **Scalable Lead Generation**: Automatically discover and engage with qualified prospects 24/7
-- **Efficient Networking**: Build meaningful business relationships without manual effort
-- **ROI Tracking**: Measure the impact of your networking efforts with detailed analytics
-- **Time Saving**: Automate repetitive networking tasks to focus on high-value activities
-- **Global Reach**: Connect with business contacts worldwide through intelligent targeting
+- **Data-Driven Insights**: Transform social conversations into strategic business intelligence
+- **Market Research Automation**: Continuously monitor and analyze market trends and customer sentiment
+- **ROI Tracking**: Measure the impact of your research efforts with comprehensive analytics
+- **Strategic Decision Making**: Make informed business decisions based on real conversation data
+- **Global Market Analysis**: Research business contacts and trends worldwide through intelligent analysis
 
 ## Getting Started
 
@@ -48,7 +48,7 @@ npm run build
 ```
 src/
 ├── app/                 # Next.js App Router pages
-│   ├── page.tsx        # Home page (ThreadsHelper landing)
+│   ├── page.tsx        # Home page (ThreadsHelper analytics platform)
 │   ├── layout.tsx      # Root layout with SEO metadata
 │   └── globals.css     # Global styles
 ├── components/
@@ -74,18 +74,18 @@ src/
 - **Performance Optimized**: Fast loading times and efficient code splitting
 - **Mobile Responsive**: Fully responsive design for all devices
 
-## Pricing Plans
+## Research Plans
 
-- **Starter ($49/month)**: Perfect for small businesses - Up to 100 contact discoveries
-- **Professional ($149/month)**: For growing businesses - Up to 500 contact discoveries with advanced features
-- **Enterprise ($399/month)**: For large organizations - Unlimited contact discovery with full automation
+- **Researcher ($49/month)**: Perfect for small businesses - Up to 110 research queries
+- **Business ($149/month)**: For growing businesses - Up to 500 research queries with advanced analytics
+- **Enterprise ($399/month)**: For large organizations - Unlimited research with full business intelligence
 
 ## AI Features
 
-- **Smart Contact Profiling**: AI analyzes user behavior and interests to identify ideal prospects
-- **Context-Aware Commenting**: Generates relevant comments based on conversation context
-- **Relationship Scoring**: Evaluates potential value of discovered contacts
-- **Automated Follow-ups**: Maintains engagement with discovered contacts over time
+- **Smart Conversation Analysis**: AI analyzes conversation patterns and sentiment to identify business opportunities
+- **Market Intelligence Reports**: Generates comprehensive market research reports based on conversation data
+- **Contact Scoring**: Evaluates potential value and relevance of discovered contacts
+- **Trend Identification**: Automatically identifies emerging trends and market shifts
 
 ## Contributing
 
@@ -97,14 +97,4 @@ src/
 
 ## License
 
-This project is licensed under the MIT License.
-
-## Contact
-
-- Website: [threadshelper.com](https://threadshelper.com)
-- Email: support@threadshelper.com
-- Twitter: [@ThreadsHelper](https://twitter.com/ThreadsHelper)
-
----
-
-**Transform your Threads networking with AI-powered contact discovery and relationship building.**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

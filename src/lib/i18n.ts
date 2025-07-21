@@ -11,106 +11,106 @@ export const translations = {
     // Home page
     home: {
       title: 'Enhance Your Threads Experience',
-      subtitle: 'Browser extension for advanced Threads functionality',
-      description: 'Powerful browser extension that enhances your Threads experience with advanced features and improved workflow.',
-      getExtension: 'Get Extension',
+      subtitle: 'Business intelligence platform for Threads analytics',
+      description: 'Powerful business intelligence platform that analyzes your Threads conversations with advanced research tools and actionable insights.',
+      getExtension: 'Get Platform Access',
       learnMore: 'Learn More',
       features: {
         title: 'Key Features',
         enhanced: {
-          title: 'Enhanced Interface',
-          description: 'Improved user interface with additional functionality'
+          title: 'Advanced Analytics',
+          description: 'Comprehensive conversation analysis with business intelligence'
         },
         productivity: {
-          title: 'Productivity Tools',
-          description: 'Advanced tools to boost your productivity on Threads'
+          title: 'Research Tools',
+          description: 'Professional tools to analyze trends and identify opportunities'
         },
         analytics: {
-          title: 'Analytics Dashboard',
-          description: 'Detailed analytics and insights for your Threads activity'
+          title: 'Insights Dashboard',
+          description: 'Detailed business analytics and market insights for your industry'
         },
         automation: {
-          title: 'Smart Automation',
-          description: 'Automate routine tasks and streamline your workflow'
+          title: 'Market Intelligence',
+          description: 'Analyze market trends and networking patterns for strategic decisions'
         }
       },
       cta: {
         title: 'Ready to Get Started?',
-        description: 'Join thousands of users who have enhanced their Threads experience',
-        button: 'Download Extension'
+        description: 'Join thousands of businesses who have enhanced their market research',
+        button: 'Start Research'
       }
     },
     // Promo page (AI features)
     promo: {
-      badge: 'Pre-order Open',
-      title: 'Find the Right People in Threads with AI',
-      subtitle: 'Smart system automatically scans Threads feed through your account, using artificial intelligence to find people based on specified criteria.',
+      badge: 'Research Platform Available',
+      title: 'Research and Analyze People in Threads with AI',
+      subtitle: 'Advanced analytics system that analyzes Threads conversations to provide business intelligence and market research insights based on specified criteria.',
       features: [
-        { text: 'Smart Scanning' },
-        { text: 'AI Profile Analysis' },
-        { text: 'Precise Filtering' }
+        { text: 'Smart Analytics' },
+        { text: 'AI Profile Research' },
+        { text: 'Precise Insights' }
       ],
-      cta: 'Pre-order Now',
-      launch: 'Launch in',
+      cta: 'Start Research',
+      launch: 'Available in',
       days: 'days',
-      price: 'Professional plan for 1 month - $9',
+      price: 'Professional plan for 1 month - $49',
       howItWorks: {
-        title: 'How Threads AI Works',
-        description: 'Connect your account, set search criteria and get results automatically',
+        title: 'How Threads Research Works',
+        description: 'Connect your account, set research criteria and get analytics automatically',
         steps: [
           {
             title: 'Connect Account',
-            description: 'Securely connect your Threads account to our system using extension'
+            description: 'Securely connect your Threads account to our analytics platform'
           },
           {
-            title: 'Set Criteria',
-            description: 'Define search parameters: interests, location, activity in web panel'
+            title: 'Set Research Criteria',
+            description: 'Define analysis parameters: interests, demographics, activity patterns'
           },
           {
-            title: 'Get Results',
-            description: 'System automatically scans and finds the right people'
+            title: 'Get Insights',
+            description: 'Receive comprehensive analytics and business intelligence reports'
           }
         ]
       },
       plans: {
-        title: 'Choose Your Plan',
-        description: 'Each plan includes monthly token package for AI profile analysis',
+        title: 'Choose Your Research Plan',
+        description: 'Each plan includes monthly analytics credits for AI-powered business research',
         starter: {
-          name: 'Starter',
-          description: 'For research beginners',
-          tokens: '110 tokens/month',
-          people: '~20 relevant people with 90%+ accuracy',
+          name: 'Researcher',
+          description: 'For market research beginners',
+          tokens: '110 research credits/month',
+          people: '~20 detailed profiles with 90%+ accuracy',
           features: [
-            'Up to 110 AI searches per month',
-            'Basic filtering criteria',
+            'Up to 110 AI research queries per month',
+            'Basic analytics criteria',
             'Email support',
-            'Export results'
+            'Export research data'
           ]
         },
         professional: {
-          name: 'Professional',
-          description: 'For active users',
-          tokens: '500 tokens/month',
-          people: '~90 relevant people with 90%+ accuracy',
+          name: 'Business',
+          description: 'For active business analysts',
+          tokens: '500 research credits/month',
+          people: '~90 detailed profiles with 90%+ accuracy',
           features: [
-            'Up to 500 AI searches per month',
-            'Advanced filters',
+            'Up to 500 AI research queries per month',
+            'Advanced analytics filters',
             'Priority support',
             'API access',
-            'Detailed analytics'
+            'Detailed business reports'
           ]
         },
         enterprise: {
           name: 'Enterprise',
-          description: 'For teams and agencies',
-          tokens: '5,000 tokens/month',
-          people: '~833 relevant people with 90%+ accuracy',
+          description: 'For research teams and agencies',
+          tokens: '5,000 research credits/month',
+          people: '~833 detailed profiles with 90%+ accuracy',
           features: [
-            'Up to 5,000 AI searches per month',
-            'Custom criteria',
-            'Personal manager',
-            'Integrations',
-            'White label'
+            'Up to 5,000 AI research queries per month',
+            'Custom research criteria',
+            'Personal research manager',
+            'CRM integrations',
+            'White label analytics'
           ]
         }
       }
@@ -131,106 +131,106 @@ export const translations = {
     // Home page
     home: {
       title: 'Улучшите Ваш Опыт в Threads',
-      subtitle: 'Браузерное расширение для расширенного функционала Threads',
-      description: 'Мощное браузерное расширение, которое улучшает ваш опыт в Threads с дополнительными функциями и улучшенным рабочим процессом.',
-      getExtension: 'Получить Расширение',
+      subtitle: 'Платформа бизнес-аналитики для анализа Threads',
+      description: 'Мощная платформа бизнес-аналитики, которая анализирует ваши разговоры в Threads с продвинутыми инструментами исследования и практическими инсайтами.',
+      getExtension: 'Получить Доступ к Платформе',
       learnMore: 'Узнать Больше',
       features: {
         title: 'Ключевые Функции',
         enhanced: {
-          title: 'Улучшенный Интерфейс',
-          description: 'Улучшенный пользовательский интерфейс с дополнительным функционалом'
+          title: 'Продвинутая Аналитика',
+          description: 'Комплексный анализ разговоров с бизнес-аналитикой'
         },
         productivity: {
-          title: 'Инструменты Продуктивности',
-          description: 'Продвинутые инструменты для повышения продуктивности в Threads'
+          title: 'Инструменты Исследования',
+          description: 'Профессиональные инструменты для анализа трендов и выявления возможностей'
         },
         analytics: {
-          title: 'Панель Аналитики',
-          description: 'Детальная аналитика и инсайты вашей активности в Threads'
+          title: 'Панель Инсайтов',
+          description: 'Детальная бизнес-аналитика и рыночные инсайты для вашей отрасли'
         },
         automation: {
-          title: 'Умная Автоматизация',
-          description: 'Автоматизация рутинных задач и оптимизация рабочего процесса'
+          title: 'Рыночная Аналитика',
+          description: 'Анализируйте рыночные тренды и паттерны нетворкинга для стратегических решений'
         }
       },
       cta: {
         title: 'Готовы Начать?',
-        description: 'Присоединяйтесь к тысячам пользователей, которые улучшили свой опыт в Threads',
-        button: 'Скачать Расширение'
+        description: 'Присоединяйтесь к тысячам бизнесов, которые улучшили свои рыночные исследования',
+        button: 'Начать Исследование'
       }
     },
     // Promo page (AI features)
     promo: {
-      badge: 'Предзаказ открыт',
-      title: 'Найдите нужных людей в Threads с помощью AI',
-      subtitle: 'Умная система автоматически сканирует ленту Threads через ваш аккаунт, используя искусственный интеллект для поиска нужных людей по заданным критериям.',
+      badge: 'Исследовательская платформа доступна',
+      title: 'Исследуйте и анализируйте людей в Threads с помощью AI',
+      subtitle: 'Продвинутая аналитическая система, которая анализирует разговоры в Threads для предоставления бизнес-аналитики и инсайтов рыночных исследований на основе заданных критериев.',
       features: [
-        { text: 'Умное сканирование' },
-        { text: 'AI анализ профилей' },
-        { text: 'Точная фильтрация' }
+        { text: 'Умная аналитика' },
+        { text: 'AI исследование профилей' },
+        { text: 'Точные инсайты' }
       ],
-      cta: 'Оформить предзаказ',
-      launch: 'Запуск через',
+      cta: 'Начать исследование',
+      launch: 'Доступно через',
       days: 'дней',
-      price: 'Professional план на месяц за $9',
+      price: 'Professional план на месяц за $49',
       howItWorks: {
-        title: 'Как работает Threads AI',
-        description: 'Подключите свой аккаунт, настройте критерии поиска и получайте результаты автоматически',
+        title: 'Как работает исследование Threads',
+        description: 'Подключите аккаунт, установите критерии исследования и получайте аналитику автоматически',
         steps: [
           {
             title: 'Подключите аккаунт',
-            description: 'Безопасно подключите ваш Threads аккаунт к нашей системе с помощью расширения'
+            description: 'Безопасно подключите ваш Threads аккаунт к нашей аналитической платформе'
           },
           {
-            title: 'Настройте критерии',
-            description: 'Задайте параметры поиска: интересы, локация, активность в веб-панели'
+            title: 'Установите критерии исследования',
+            description: 'Определите параметры анализа: интересы, демография, паттерны активности'
           },
           {
-            title: 'Получайте результаты',
-            description: 'Система автоматически сканирует и находит нужных людей'
+            title: 'Получайте инсайты',
+            description: 'Получайте комплексную аналитику и отчеты бизнес-аналитики'
           }
         ]
       },
       plans: {
-        title: 'Выберите ваш план',
-        description: 'Каждый план включает месячный пакет токенов для AI анализа профилей',
+        title: 'Выберите ваш исследовательский план',
+        description: 'Каждый план включает месячные аналитические кредиты для AI-исследований бизнеса',
         starter: {
-          name: 'Starter',
-          description: 'Для начинающих исследователей',
-          tokens: '110 токенов/месяц',
-          people: '~20 нужных людей с точностью 90%+',
+          name: 'Исследователь',
+          description: 'Для начинающих маркетинговых исследователей',
+          tokens: '110 исследовательских кредитов/месяц',
+          people: '~20 детальных профилей с точностью 90%+',
           features: [
-            'До 110 AI поисков в месяц',
-            'Базовые критерии фильтрации',
+            'До 110 AI исследовательских запросов в месяц',
+            'Базовые критерии аналитики',
             'Email поддержка',
-            'Экспорт результатов'
+            'Экспорт исследовательских данных'
           ]
         },
         professional: {
-          name: 'Professional',
-          description: 'Для активных пользователей',
-          tokens: '500 токенов/месяц',
-          people: '~90 нужных людей с точностью 90%+',
+          name: 'Бизнес',
+          description: 'Для активных бизнес-аналитиков',
+          tokens: '500 исследовательских кредитов/месяц',
+          people: '~90 детальных профилей с точностью 90%+',
           features: [
-            'До 500 AI поисков в месяц',
-            'Расширенные фильтры',
+            'До 500 AI исследовательских запросов в месяц',
+            'Продвинутые аналитические фильтры',
             'Приоритетная поддержка',
             'API доступ',
-            'Детальная аналитика'
+            'Детальные бизнес-отчеты'
           ]
         },
         enterprise: {
-          name: 'Enterprise',
-          description: 'Для команд и агентств',
-          tokens: '5,000 токенов/месяц',
-          people: '~833 нужных людей с точностью 90%+',
+          name: 'Корпоративный',
+          description: 'Для исследовательских команд и агентств',
+          tokens: '5,000 исследовательских кредитов/месяц',
+          people: '~833 детальных профилей с точностью 90%+',
           features: [
-            'До 5,000 AI поисков в месяц',
-            'Кастомные критерии',
-            'Персональный менеджер',
-            'Интеграции',
-            'Белый лейбл'
+            'До 5,000 AI исследовательских запросов в месяц',
+            'Кастомные критерии исследования',
+            'Персональный менеджер исследований',
+            'Интеграции с CRM',
+            'Белый лейбл аналитики'
           ]
         }
       }

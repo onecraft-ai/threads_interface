@@ -18,54 +18,54 @@ export interface SEOData {
 export function getSEOData(language: 'en' | 'ru'): SEOData {
   const seoData = {
     en: {
-      title: "ThreadsHelper - AI-Powered Business Networking & Contact Discovery for Threads",
-      description: "Transform your Threads networking with AI-powered contact discovery, automated commenting, and intelligent business relationship building. Find customers, partners, and valuable contacts automatically.",
+      title: "ThreadsHelper - AI-Powered Business Intelligence & Market Research for Threads",
+      description: "Transform your Threads insights with AI-powered business intelligence, market research analytics, and professional networking intelligence. Analyze conversations, research contacts, and discover opportunities.",
       keywords: [
-        "Threads AI agent",
-        "business networking automation", 
-        "contact discovery",
-        "automated commenting",
-        "social media AI",
-        "business relationship building",
-        "Threads marketing tool",
-        "AI customer acquisition",
-        "social selling automation",
-        "networking software",
-        "contact finder",
-        "business development AI",
-        "Threads automation",
-        "AI networking tool",
-        "business contact discovery"
+        "Threads business intelligence",
+        "market research platform", 
+        "conversation analytics",
+        "business intelligence software",
+        "social media analytics",
+        "networking intelligence",
+        "Threads analytics tool",
+        "AI market research",
+        "business data analysis",
+        "research software",
+        "contact research",
+        "business development analytics",
+        "Threads insights",
+        "AI analytics tool",
+        "business research platform"
       ],
-      ogTitle: "ThreadsHelper - AI Business Networking & Contact Discovery",
-      ogDescription: "AI-powered agent that discovers valuable contacts, automates commenting, and builds business relationships on Threads. Transform social conversations into opportunities.",
-      twitterTitle: "ThreadsHelper - AI Business Networking & Contact Discovery", 
-      twitterDescription: "AI-powered agent for automated contact discovery and business networking on Threads. Build relationships through intelligent comment automation."
+      ogTitle: "ThreadsHelper - AI Business Intelligence & Market Research",
+      ogDescription: "AI-powered business intelligence platform that analyzes Threads conversations for market research, contact discovery, and networking insights. Transform social data into business opportunities.",
+      twitterTitle: "ThreadsHelper - AI Business Intelligence & Market Research", 
+      twitterDescription: "AI-powered platform for advanced business intelligence and market research on Threads. Analyze conversations and discover networking opportunities."
     },
     ru: {
-      title: "ThreadsHelper - AI-Агент для Бизнес-Нетворкинга и Поиска Контактов в Threads",
-      description: "Трансформируйте ваш нетворкинг в Threads с помощью AI-поиска контактов, автоматического комментирования и интеллектуального построения бизнес-отношений. Находите клиентов, партнеров и ценные контакты автоматически.",
+      title: "ThreadsHelper - AI Бизнес-Аналитика и Маркетинговые Исследования для Threads",
+      description: "Трансформируйте ваши инсайты Threads с AI-аналитикой, платформой маркетинговых исследований и профессиональной сетевой аналитикой. Анализируйте разговоры, исследуйте контакты и находите возможности.",
       keywords: [
-        "Threads AI агент",
-        "автоматизация бизнес-нетворкинга",
-        "поиск контактов",
-        "автоматическое комментирование", 
-        "AI для социальных сетей",
-        "построение бизнес-отношений",
-        "Threads маркетинг инструмент",
-        "AI привлечение клиентов",
-        "автоматизация социальных продаж",
-        "программа для нетворкинга",
-        "поиск контактов",
-        "AI для бизнес-развития",
-        "автоматизация Threads",
-        "AI инструмент нетворкинга",
-        "поиск бизнес-контактов"
+        "Threads бизнес-аналитика",
+        "платформа маркетинговых исследований",
+        "аналитика разговоров", 
+        "программное обеспечение бизнес-аналитики",
+        "аналитика социальных сетей",
+        "сетевая аналитика",
+        "инструмент аналитики Threads",
+        "AI маркетинговые исследования",
+        "анализ бизнес-данных",
+        "программное обеспечение исследований",
+        "исследование контактов",
+        "аналитика развития бизнеса",
+        "инсайты Threads",
+        "AI инструмент аналитики",
+        "платформа бизнес-исследований"
       ],
-      ogTitle: "ThreadsHelper - AI Бизнес-Нетворкинг и Поиск Контактов",
-      ogDescription: "AI-агент, который находит ценные контакты, автоматизирует комментирование и строит бизнес-отношения в Threads. Превращайте социальные разговоры в возможности.",
-      twitterTitle: "ThreadsHelper - AI Бизнес-Нетворкинг и Поиск Контактов",
-      twitterDescription: "AI-агент для автоматического поиска контактов и бизнес-нетворкинга в Threads. Стройте отношения через интеллектуальную автоматизацию комментариев."
+      ogTitle: "ThreadsHelper - AI Бизнес-Аналитика и Маркетинговые Исследования",
+      ogDescription: "AI-платформа бизнес-аналитики, которая анализирует разговоры в Threads для маркетинговых исследований, обнаружения контактов и сетевых инсайтов. Превращайте социальные данные в бизнес-возможности.",
+      twitterTitle: "ThreadsHelper - AI Бизнес-Аналитика и Маркетинговые Исследования",
+      twitterDescription: "AI-платформа для продвинутой бизнес-аналитики и маркетинговых исследований в Threads. Анализируйте разговоры и находите возможности нетворкинга."
     }
   };
   
@@ -80,8 +80,8 @@ export function generateStructuredData(language: 'en' | 'ru') {
     "@type": "SoftwareApplication",
     "name": "ThreadsHelper",
     "description": isEnglish 
-      ? "AI-powered business networking agent that discovers contacts, automates commenting, and builds relationships on Threads."
-      : "AI-агент для бизнес-нетворкинга, который находит контакты, автоматизирует комментирование и строит отношения в Threads.",
+      ? "AI-powered business intelligence platform that analyzes Threads conversations for market research, contact discovery, and networking insights."
+      : "AI-платформа бизнес-аналитики, которая анализирует разговоры в Threads для маркетинговых исследований, обнаружения контактов и сетевых инсайтов.",
     "url": "https://threadshelper.com",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
@@ -101,19 +101,19 @@ export function generateStructuredData(language: 'en' | 'ru') {
       "reviewCount": "247"
     },
     "featureList": isEnglish ? [
-      "AI-powered contact discovery",
-      "Automated comment generation", 
-      "Business relationship building",
-      "Networking analytics",
-      "CRM integration",
-      "Real-time insights"
+      "AI-powered business intelligence",
+      "Market research analytics", 
+      "Conversation insights analysis",
+      "Networking intelligence",
+      "Contact research tools",
+      "Business data visualization"
     ] : [
-      "AI-поиск контактов",
-      "Автоматическая генерация комментариев",
-      "Построение бизнес-отношений", 
-      "Аналитика нетворкинга",
-      "Интеграция с CRM",
-      "Аналитика в реальном времени"
+      "AI-бизнес аналитика",
+      "Аналитика маркетинговых исследований",
+      "Анализ инсайтов разговоров", 
+      "Сетевая аналитика",
+      "Инструменты исследования контактов",
+      "Визуализация бизнес-данных"
     ]
   };
 }

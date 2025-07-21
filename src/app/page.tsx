@@ -112,44 +112,44 @@ export default function Home() {
   const features = language === 'en' ? [
     {
       icon: MessageCircle,
-      title: "Smart Contact Discovery",
-      description: "AI-powered agent that finds and engages with your ideal customers, partners, and business contacts in Threads discussions"
+      title: "Business Contact Research",
+      description: "Advanced research tools that help you discover and analyze your ideal customers, partners, and business contacts in Threads discussions"
     },
     {
       icon: Target,
-      title: "Automated Comment Generation",
-      description: "Automatically suggests and posts relevant, contextual comments that drive engagement and build relationships with key contacts"
+      title: "Networking Intelligence",
+      description: "Get detailed insights and analytics on potential business relationships, conversation patterns, and networking opportunities"
     },
     {
       icon: UserCheck,
-      title: "Authentic Relationship Building",
-      description: "Builds genuine business relationships and trust through meaningful conversations with prospects and industry contacts"
+      title: "Relationship Mapping",
+      description: "Visualize and track business relationships, identify key influencers, and understand network connections in your industry"
     },
     {
       icon: BarChart3,
-      title: "Contact & Engagement Analytics",
-      description: "Track contact discovery, engagement metrics, relationship building progress, and business opportunities generated"
+      title: "Business Analytics Dashboard",
+      description: "Comprehensive analytics on contact research, networking insights, relationship building progress, and business opportunities"
     }
   ] : [
     {
       icon: MessageCircle,
-      title: "Умное обнаружение контактов",
-      description: "AI-агент, который находит и взаимодействует с вашими идеальными клиентами, партнерами и бизнес-контактами в дискуссиях Threads"
+      title: "Исследование бизнес-контактов",
+      description: "Продвинутые инструменты исследования, которые помогают обнаруживать и анализировать идеальных клиентов, партнеров и бизнес-контакты в дискуссиях Threads"
     },
     {
       icon: Target,
-      title: "Автоматическая генерация комментариев",
-      description: "Автоматически предлагает и публикует релевантные, контекстные комментарии, которые повышают вовлеченность и строят отношения с ключевыми контактами"
+      title: "Сетевая аналитика",
+      description: "Получайте детальные инсайты и аналитику по потенциальным деловым отношениям, паттернам разговоров и возможностям нетворкинга"
     },
     {
       icon: UserCheck,
-      title: "Подлинное построение отношений",
-      description: "Строит настоящие деловые отношения и доверие через значимые разговоры с перспективами и отраслевыми контактами"
+      title: "Картографирование отношений",
+      description: "Визуализируйте и отслеживайте деловые отношения, определяйте ключевых влиятелей и понимайте сетевые связи в вашей отрасли"
     },
     {
       icon: BarChart3,
-      title: "Аналитика контактов и вовлечения",
-      description: "Отслеживайте обнаружение контактов, метрики вовлечения, прогресс построения отношений и созданные бизнес-возможности"
+      title: "Панель бизнес-аналитики",
+      description: "Комплексная аналитика по исследованию контактов, сетевым инсайтам, прогрессу построения отношений и бизнес-возможностям"
     }
   ];
 
@@ -302,15 +302,15 @@ export default function Home() {
                 <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Threads
                 </span>
-                {" "}Business Connector
+                {" "}Business Intelligence
               </>
             ) : (
               <>
-                Ваш{" "}
+                Ваша{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Threads
                 </span>
-                {" "}Бизнес-Коннектор
+                {" "}Бизнес-Аналитика
               </>
             )}
           </h1>
@@ -318,20 +318,20 @@ export default function Home() {
           {/* Subtitle - SEO-optimized description */}
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4" role="doc-subtitle">
             {language === 'en' 
-              ? "AI-powered agent that discovers, connects, and converts your ideal customers, partners, and business contacts on Threads. Automatically generates and posts relevant comments to build relationships and unlock opportunities."
-              : "AI-агент, который обнаруживает, соединяет и конвертирует ваших идеальных клиентов, партнеров и бизнес-контакты в Threads. Автоматически генерирует и публикует релевантные комментарии для построения отношений и открытия возможностей."
+              ? "Advanced business intelligence platform that analyzes Threads conversations to discover valuable contacts, research market trends, and identify networking opportunities. Get actionable insights for strategic business development."
+              : "Продвинутая платформа бизнес-аналитики, которая анализирует разговоры в Threads для обнаружения ценных контактов, исследования рыночных трендов и выявления возможностей нетворкинга. Получайте практические инсайты для стратегического развития бизнеса."
             }
           </p>
 
           {/* Feature Pills */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4" role="list">
             {(language === 'en' ? [
-              { icon: Target, text: "Contact Discovery" },
-              { icon: MessageCircle, text: "Auto-Commenting" },
-              { icon: BarChart3, text: "Business Analytics" }
+              { icon: Target, text: "Contact Research" },
+              { icon: MessageCircle, text: "Conversation Analytics" },
+              { icon: BarChart3, text: "Business Intelligence" }
             ] : [
-              { icon: Target, text: "Поиск контактов" },
-              { icon: MessageCircle, text: "Авто-комментирование" },
+              { icon: Target, text: "Исследование контактов" },
+              { icon: MessageCircle, text: "Аналитика разговоров" },
               { icon: BarChart3, text: "Бизнес-аналитика" }
             ]).map((feature, index) => (
               <div 
@@ -382,15 +382,15 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-white/60 px-4" role="list">
             <div className="flex items-center space-x-2" role="listitem">
               <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" aria-hidden="true" />
-              <span className="text-xs sm:text-sm">{language === 'en' ? 'No Spam' : 'Без спама'}</span>
+              <span className="text-xs sm:text-sm">{language === 'en' ? 'Research Only' : 'Только исследования'}</span>
             </div>
             <div className="flex items-center space-x-2" role="listitem">
               <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" aria-hidden="true" />
-              <span className="text-xs sm:text-sm">{language === 'en' ? 'Auto-Comments' : 'Авто-комментарии'}</span>
+              <span className="text-xs sm:text-sm">{language === 'en' ? 'Analytics' : 'Аналитика'}</span>
             </div>
             <div className="flex items-center space-x-2" role="listitem">
               <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" aria-hidden="true" />
-              <span className="text-xs sm:text-sm">{language === 'en' ? 'Measurable' : 'Измеримо'}</span>
+              <span className="text-xs sm:text-sm">{language === 'en' ? 'Insights' : 'Инсайты'}</span>
             </div>
           </div>
         </div>
@@ -401,12 +401,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <header className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              {language === 'en' ? 'How ThreadsHelper Discovers & Connects' : 'Как ThreadsHelper находит и соединяет'}
+              {language === 'en' ? 'How ThreadsHelper Analyzes & Researches' : 'Как ThreadsHelper анализирует и исследует'}
             </h2>
             <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto px-4">
               {language === 'en' 
-                ? "Advanced AI technology that finds, analyzes, and automatically engages with your ideal customers, partners, and business contacts through intelligent comment generation"
-                : "Продвинутая AI-технология, которая находит, анализирует и автоматически взаимодействует с идеальными клиентами, партнерами и бизнес-контактами через интеллектуальную генерацию комментариев"
+                ? "Advanced business intelligence technology that analyzes Threads conversations, identifies networking patterns, and provides actionable insights for strategic business development and relationship building"
+                : "Продвинутая технология бизнес-аналитики, которая анализирует разговоры в Threads, выявляет паттерны нетворкинга и предоставляет практические инсайты для стратегического развития бизнеса и построения отношений"
               }
             </p>
           </header>
@@ -433,12 +433,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <header className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              {language === 'en' ? 'Proven Networking Results' : 'Доказанные результаты нетворкинга'}
+              {language === 'en' ? 'Proven Research Results' : 'Доказанные результаты исследований'}
             </h2>
             <p className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto px-4">
               {language === 'en' 
-                ? "Real businesses building valuable connections and discovering new opportunities with ThreadsHelper"
-                : "Реальные бизнесы строят ценные связи и обнаруживают новые возможности с ThreadsHelper"
+                ? "Real businesses discovering valuable insights and identifying new opportunities with ThreadsHelper analytics platform"
+                : "Реальные бизнесы обнаруживают ценные инсайты и выявляют новые возможности с аналитической платформой ThreadsHelper"
               }
             </p>
           </header>
@@ -486,12 +486,12 @@ export default function Home() {
       <section className="relative z-10 py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-            {language === 'en' ? 'Ready to Transform Your Business Networking?' : 'Готовы трансформировать ваш бизнес-нетворкинг?'}
+            {language === 'en' ? 'Ready to Transform Your Business Intelligence?' : 'Готовы трансформировать вашу бизнес-аналитику?'}
           </h2>
           <p className="text-base sm:text-lg text-white/80 mb-6 sm:mb-8 px-4">
             {language === 'en' 
-              ? "Join thousands of businesses using AI to discover valuable contacts, build meaningful relationships, and unlock new opportunities through intelligent Threads networking."
-              : "Присоединяйтесь к тысячам бизнесов, использующих AI для обнаружения ценных контактов, построения значимых отношений и открытия новых возможностей через интеллектуальный нетворкинг в Threads."
+              ? "Join thousands of businesses using advanced analytics to discover valuable insights, research market opportunities, and make data-driven networking decisions through intelligent Threads analysis."
+              : "Присоединяйтесь к тысячам бизнесов, использующих продвинутую аналитику для обнаружения ценных инсайтов, исследования рыночных возможностей и принятия решений на основе данных через интеллектуальный анализ Threads."
             }
           </p>
           
