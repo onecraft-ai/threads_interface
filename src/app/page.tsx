@@ -1,6 +1,7 @@
 "use client";
 
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import { DownloadSection } from "@/components/ui/download-section";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { getSEOData, generateStructuredData } from "@/lib/utils";
 import { useState, useEffect } from "react";
@@ -30,6 +31,7 @@ import {
 export default function Home() {
   const { language, setLanguage } = useLanguage();
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [daysUntilLaunch, setDaysUntilLaunch] = useState(0);
@@ -99,6 +101,19 @@ export default function Home() {
     document.addEventListener('click', handleClickOutside);
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isLanguageDropdownOpen, isMobileMenuOpen]);
+
+  // Close modals on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsDownloadModalOpen(false);
+        setIsPaymentModalOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, []);
 
   const getDayWord = (days: number) => {
     if (language === 'ru') {
@@ -185,6 +200,7 @@ export default function Home() {
                 <a href="#features" className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base">
                   {language === 'en' ? 'Features' : 'Возможности'}
                 </a>
+
                 <a href="#pricing" className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base">
                   {language === 'en' ? 'Pricing' : 'Цены'}
                 </a>
@@ -263,6 +279,7 @@ export default function Home() {
                 >
                   {language === 'en' ? 'Features' : 'Возможности'}
                 </a>
+
                 <a 
                   href="#pricing" 
                   className="text-white/80 hover:text-cyan-400 transition-colors text-base py-2"
@@ -346,26 +363,38 @@ export default function Home() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 sm:mb-8 px-4">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6 sm:mb-8 px-4">
             <button 
-              onClick={() => setIsPaymentModalOpen(true)}
-              className="group relative px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-base sm:text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
+              onClick={() => setIsDownloadModalOpen(true)}
+              className="group btn-primary relative px-10 sm:px-14 py-4 sm:py-5 text-white font-bold text-base sm:text-lg rounded-full shadow-2xl hover:shadow-cyan-500/40 transition-all duration-500 transform hover:scale-105 w-full sm:w-auto animate-shimmer hover:neon-cyan"
               aria-label={language === 'en' ? 'Start Free Trial of ThreadsHelper' : 'Начать бесплатный пробный период ThreadsHelper'}
             >
-              <div className="flex items-center justify-center space-x-3">
-                <Rocket className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
-                <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
+              <div className="flex items-center justify-center space-x-3 relative z-10">
+                <div className="p-1 rounded-full bg-white/20 group-hover:bg-white/30 transition-all">
+                  <Rocket className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
+                </div>
+                <span className="group-hover:text-glow transition-all">
+                  {language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}
+                </span>
+                <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
               </div>
             </button>
             
             <a 
               href="#features"
-              className="group px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/30 text-white font-medium text-base sm:text-lg rounded-full hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 w-full sm:w-auto"
+              className="group interactive-card px-8 sm:px-10 py-4 sm:py-5 glass border-2 border-white/30 text-white font-semibold text-base sm:text-lg rounded-full hover:border-cyan-400/60 hover:text-cyan-400 transition-all duration-500 w-full sm:w-auto relative overflow-hidden animate-shimmer"
               aria-label={language === 'en' ? 'Learn how ThreadsHelper works' : 'Узнать, как работает ThreadsHelper'}
             >
-              <div className="flex items-center justify-center space-x-3">
-                <span>{language === 'en' ? 'See How It Works' : 'Как это работает'}</span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              {/* Hover фон */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/5 to-purple-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="flex items-center justify-center space-x-3 relative z-10">
+                <span className="group-hover:text-glow transition-all">
+                  {language === 'en' ? 'See How It Works' : 'Как это работает'}
+                </span>
+                <div className="p-1 rounded-full bg-white/10 group-hover:bg-cyan-400/20 transition-all">
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:text-cyan-400 transition-all" aria-hidden="true" />
+                </div>
               </div>
             </a>
           </div>
@@ -403,25 +432,46 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               {language === 'en' ? 'How ThreadsHelper Analyzes & Researches' : 'Как ThreadsHelper анализирует и исследует'}
             </h2>
-            <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto px-4">
-              {language === 'en' 
-                ? "Advanced business intelligence technology that analyzes Threads conversations, identifies networking patterns, and provides actionable insights for strategic business development and relationship building"
-                : "Продвинутая технология бизнес-аналитики, которая анализирует разговоры в Threads, выявляет паттерны нетворкинга и предоставляет практические инсайты для стратегического развития бизнеса и построения отношений"
-              }
-            </p>
+                      <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto px-4">
+            {language === 'en' 
+              ? "Your personal AI agent that operates directly from your account, analyzing your unique profile, scanning your network environment, and monitoring conversations around you to discover opportunities tailored specifically for your business goals and networking style"
+              : "Ваш персональный AI-агент, который работает напрямую от вашего аккаунта, анализируя ваш уникальный профиль, сканируя ваше сетевое окружение и мониторя разговоры вокруг вас, чтобы находить возможности, созданные специально для ваших бизнес-целей и стиля нетворкинга"
+            }
+          </p>
           </header>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {features.map((feature, index) => (
               <article 
                 key={index}
-                className="group p-4 sm:p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:scale-105"
+                className="group interactive-card p-6 sm:p-8 glass border border-white/20 rounded-3xl hover:border-cyan-400/50 transition-all duration-500 hover:scale-105 relative overflow-hidden animate-bounce-in"
+                style={{animationDelay: `${index * 0.1}s`}}
               >
-                <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-400" aria-hidden="true" />
+                {/* Фоновый градиент */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 via-purple-400/5 to-pink-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Анимированные частицы */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-1/4 right-1/4 w-1 h-1 bg-cyan-400/30 rounded-full animate-float" style={{animationDelay: `${index * 0.3}s`}}></div>
+                  <div className="absolute bottom-1/3 left-1/3 w-0.5 h-0.5 bg-purple-400/40 rounded-full animate-float" style={{animationDelay: `${index * 0.5}s`}}></div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-white/70 leading-relaxed text-sm sm:text-base">{feature.description}</p>
+
+                <div className="relative z-10">
+                  <div className="mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <div className="p-3 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-purple-400/20 group-hover:from-cyan-400/30 group-hover:to-purple-400/30 transition-all duration-300 inline-block">
+                      <feature.icon className="w-8 h-8 sm:w-10 sm:h-10 text-cyan-400 group-hover:text-cyan-300 transition-colors filter drop-shadow-lg" aria-hidden="true" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-4 group-hover:text-glow transition-all duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-white/70 leading-relaxed text-sm sm:text-base group-hover:text-white/80 transition-colors">
+                    {feature.description}
+                  </p>
+                  
+                  {/* Декоративная линия */}
+                  <div className="mt-4 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-500"></div>
+                </div>
               </article>
             ))}
           </div>
@@ -471,12 +521,18 @@ export default function Home() {
             </p>
           </header>
 
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-8 overflow-visible">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-8 overflow-visible relative">
             <iframe 
               src={`https://my.boathouse.co/api/v1/pricingtableiframe?p=0bfc51c7-4c7a-4320-686e-08ddaec4447a&l=CREATEACCOUNTURL&s=${cssUrl}`}
               frameBorder="0"
               className="w-full h-[700px] rounded-lg"
               title={language === 'en' ? 'ThreadsHelper Pricing Plans' : 'Планы цен ThreadsHelper'}
+            />
+            {/* Прозрачный оверлей для перехвата кликов */}
+            <div 
+              className="absolute inset-0 rounded-lg cursor-pointer"
+              onClick={() => setIsDownloadModalOpen(true)}
+              title={language === 'ru' ? 'Начать бесплатный пробный период' : 'Start Free Trial'}
             />
           </div>
         </div>
@@ -496,17 +552,25 @@ export default function Home() {
           </p>
           
           <button 
-            onClick={() => setIsPaymentModalOpen(true)}
-            className="group px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold text-base sm:text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105"
+            onClick={() => setIsDownloadModalOpen(true)}
+            className="group btn-primary px-10 sm:px-12 py-4 sm:py-5 text-white font-bold text-base sm:text-lg rounded-full shadow-2xl hover:shadow-cyan-500/40 transition-all duration-500 transform hover:scale-105 animate-shimmer hover:neon-cyan"
             aria-label={language === 'en' ? 'Start Free Trial - Transform Your Business Networking' : 'Начать бесплатный пробный период - Трансформируйте ваш бизнес-нетворкинг'}
           >
-            <div className="flex items-center space-x-3">
-              <Rocket className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
-              <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
+            <div className="flex items-center space-x-3 relative z-10">
+              <div className="p-1 rounded-full bg-white/20 group-hover:bg-white/30 transition-all">
+                <Rocket className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-bounce transition-transform" aria-hidden="true" />
+              </div>
+              <span className="group-hover:text-glow transition-all">
+                {language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}
+              </span>
+              <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
             </div>
           </button>
         </div>
       </section>
+
+      {/* Download Section - перемещена в конец */}
+      <DownloadSection />
 
       {/* Footer */}
       <footer id="contact" className="relative z-10 border-t border-white/10 py-8 sm:py-12 px-4 sm:px-6">
@@ -572,6 +636,44 @@ export default function Home() {
         </div>
       </footer>
 
+      {/* Download Modal */}
+      {isDownloadModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+          onClick={() => setIsDownloadModalOpen(false)}
+        >
+          <div 
+            className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-3xl max-w-5xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-6 border-b border-white/10">
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                  {language === 'ru' ? 'Скачать приложение' : 'Download App'}
+                </h3>
+                <p className="text-white/70">
+                  {language === 'ru' 
+                    ? 'Скачайте настольное приложение для работы с Threads'
+                    : 'Download desktop application for Threads'
+                  }
+                </p>
+              </div>
+              <button 
+                onClick={() => setIsDownloadModalOpen(false)}
+                className="text-white/60 hover:text-white transition-colors p-2"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            {/* Дубль секции загрузки */}
+            <div className="p-6">
+              <DownloadSection />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Payment Modal */}
       {isPaymentModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
@@ -601,9 +703,20 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <button className="w-full flex items-center justify-center space-x-3 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-sm sm:text-base">
-                <Rocket className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>{language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}</span>
+              <button 
+                onClick={() => {
+                  setIsPaymentModalOpen(false);
+                  setIsDownloadModalOpen(true);
+                }}
+                className="group btn-primary w-full flex items-center justify-center space-x-3 py-4 text-white rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all text-sm sm:text-base animate-shimmer hover:neon-cyan"
+              >
+                <div className="p-1 rounded-full bg-white/20 group-hover:bg-white/30 transition-all">
+                  <Rocket className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-bounce transition-transform" />
+                </div>
+                <span className="group-hover:text-glow transition-all">
+                  {language === 'en' ? 'Start Free Trial' : 'Начать бесплатный пробный период'}
+                </span>
+                <div className="w-1.5 h-1.5 bg-white/60 rounded-full animate-pulse"></div>
               </button>
             </div>
 
