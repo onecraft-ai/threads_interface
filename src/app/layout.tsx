@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ThreadsHelper - AI-Powered Business Networking & Contact Discovery for Threads",
   description: "Transform your Threads networking with AI-powered contact discovery, automated commenting, and intelligent business relationship building. Find customers, partners, and valuable contacts automatically.",
+  viewport: "width=device-width, initial-scale=1",
   keywords: [
     "Threads AI agent",
     "business networking automation",

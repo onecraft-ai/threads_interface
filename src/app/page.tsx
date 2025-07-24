@@ -204,8 +204,15 @@ export default function Home() {
                 <a href="#pricing" className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base">
                   {language === 'en' ? 'Pricing' : 'Цены'}
                 </a>
-                <a href="#contact" className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base">
-                  {language === 'en' ? 'Contact' : 'Контакты'}
+                <a 
+                  href="#download" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsDownloadModalOpen(true);
+                  }}
+                  className="text-white/80 hover:text-cyan-400 transition-colors text-sm sm:text-base cursor-pointer"
+                >
+                  {language === 'en' ? 'Download' : 'Загрузки'}
                 </a>
               </div>
               
@@ -216,7 +223,8 @@ export default function Home() {
                     e.stopPropagation();
                     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
                   }}
-                  className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors"
+                  className="flex items-center space-x-1 sm:space-x-2 px-3 sm:px-3 py-3 sm:py-2 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors touch-manipulation min-h-[44px]"
+                  aria-label={language === 'ru' ? 'Выбрать язык' : 'Select language'}
                 >
                   <Languages className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span className="text-xs sm:text-sm font-medium">{language.toUpperCase()}</span>
@@ -260,10 +268,10 @@ export default function Home() {
                   e.stopPropagation();
                   setIsMobileMenuOpen(!isMobileMenuOpen);
                 }}
-                className="sm:hidden p-2 text-white/80 hover:text-white transition-colors"
-                aria-label="Toggle mobile menu"
+                className="sm:hidden p-3 text-white/80 hover:text-white transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label={language === 'ru' ? 'Открыть меню' : 'Toggle mobile menu'}
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -288,11 +296,15 @@ export default function Home() {
                   {language === 'en' ? 'Pricing' : 'Цены'}
                 </a>
                 <a 
-                  href="#contact" 
-                  className="text-white/80 hover:text-cyan-400 transition-colors text-base py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  href="#download" 
+                  className="text-white/80 hover:text-cyan-400 transition-colors text-base py-2 cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMobileMenuOpen(false);
+                    setIsDownloadModalOpen(true);
+                  }}
                 >
-                  {language === 'en' ? 'Contact' : 'Контакты'}
+                  {language === 'en' ? 'Download' : 'Загрузки'}
                 </a>
               </div>
             </div>
@@ -525,7 +537,7 @@ export default function Home() {
             <iframe 
               src={`https://my.boathouse.co/api/v1/pricingtableiframe?p=0bfc51c7-4c7a-4320-686e-08ddaec4447a&l=CREATEACCOUNTURL&s=${cssUrl}`}
               frameBorder="0"
-              className="w-full h-[700px] rounded-lg"
+              className="w-full h-[500px] sm:h-[600px] md:h-[700px] rounded-lg"
               title={language === 'en' ? 'ThreadsHelper Pricing Plans' : 'Планы цен ThreadsHelper'}
             />
             {/* Прозрачный оверлей для перехвата кликов */}
@@ -573,7 +585,7 @@ export default function Home() {
       <DownloadSection />
 
       {/* Footer */}
-      <footer id="contact" className="relative z-10 border-t border-white/10 py-8 sm:py-12 px-4 sm:px-6">
+      <footer id="footer" className="relative z-10 border-t border-white/10 py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-0">
             <div className="flex items-center space-x-2 sm:space-x-3">
@@ -643,7 +655,7 @@ export default function Home() {
           onClick={() => setIsDownloadModalOpen(false)}
         >
           <div 
-            className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-3xl max-w-5xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+            className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-3xl max-w-xs sm:max-w-2xl lg:max-w-5xl w-full mx-4 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-6 border-b border-white/10">
@@ -660,9 +672,10 @@ export default function Home() {
               </div>
               <button 
                 onClick={() => setIsDownloadModalOpen(false)}
-                className="text-white/60 hover:text-white transition-colors p-2"
+                className="text-white/60 hover:text-white transition-colors p-2 sm:p-2 touch-manipulation"
+                aria-label={language === 'ru' ? 'Закрыть' : 'Close'}
               >
-                <X className="w-6 h-6" />
+                <X className="w-7 h-7 sm:w-6 sm:h-6" />
               </button>
             </div>
             
@@ -684,9 +697,10 @@ export default function Home() {
               </h3>
               <button 
                 onClick={() => setIsPaymentModalOpen(false)}
-                className="text-white/60 hover:text-white transition-colors"
+                className="text-white/60 hover:text-white transition-colors p-1 touch-manipulation"
+                aria-label={language === 'ru' ? 'Закрыть' : 'Close'}
               >
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                <X className="w-6 h-6 sm:w-6 sm:h-6" />
               </button>
             </div>
             

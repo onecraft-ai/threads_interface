@@ -54,6 +54,22 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Улучшения для мобильных устройств */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  /* Улучшенная прокрутка на iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Убираем выделение при тапе на iOS */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer utilities {
@@ -255,5 +271,21 @@
   .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  }
+  
+  /* Touch-friendly элементы */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Улучшенный скроллинг на мобильных */
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 }
