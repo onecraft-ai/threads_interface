@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "ThreadsHelper - AI Business Networking & Contact Discovery",
+    title: "ThreadsHelper - Customer Acquisition AI-Agent",
     description: "AI-powered agent that discovers valuable contacts, automates commenting, and builds business relationships on Threads. Transform social conversations into opportunities.",
     url: "https://threadshelper.com",
     siteName: "ThreadsHelper",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ThreadsHelper - AI Business Networking Tool",
+        alt: "ThreadsHelper - Customer Acquisition AI-Agent",
       },
     ],
     locale: "en_US",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ThreadsHelper - AI Business Networking & Contact Discovery",
+    title: "ThreadsHelper - Customer Acquisition AI-Agent",
     description: "AI-powered agent for automated contact discovery and business networking on Threads. Build relationships through intelligent comment automation.",
     images: ["/twitter-image.jpg"],
     creator: "@ThreadsHelper",

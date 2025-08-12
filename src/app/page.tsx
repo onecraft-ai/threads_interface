@@ -2,6 +2,7 @@
 
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import { DownloadSection } from "@/components/ui/download-section";
+import RotatingText from "@/components/ui/rotating-text";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { getSEOData, generateStructuredData } from "@/lib/utils";
 import { useState, useEffect } from "react";
@@ -124,61 +125,60 @@ export default function Home() {
     return days === 1 ? 'day' : 'days';
   };
 
-  const features = language === 'en' ? [
-    {
-      icon: MessageCircle,
-      title: "Business Contact Research",
-      description: "Advanced research tools that help you discover and analyze your ideal customers, partners, and business contacts in Threads discussions"
-    },
-    {
-      icon: Target,
-      title: "Networking Intelligence",
-      description: "Get detailed insights and analytics on potential business relationships, conversation patterns, and networking opportunities"
-    },
-    {
-      icon: UserCheck,
-      title: "Relationship Mapping",
-      description: "Visualize and track business relationships, identify key influencers, and understand network connections in your industry"
-    },
-    {
-      icon: BarChart3,
-      title: "Business Analytics Dashboard",
-      description: "Comprehensive analytics on contact research, networking insights, relationship building progress, and business opportunities"
-    }
-  ] : [
-    {
-      icon: MessageCircle,
-      title: "Исследование бизнес-контактов",
-      description: "Продвинутые инструменты исследования, которые помогают обнаруживать и анализировать идеальных клиентов, партнеров и бизнес-контакты в дискуссиях Threads"
-    },
-    {
-      icon: Target,
-      title: "Сетевая аналитика",
-      description: "Получайте детальные инсайты и аналитику по потенциальным деловым отношениям, паттернам разговоров и возможностям нетворкинга"
-    },
-    {
-      icon: UserCheck,
-      title: "Картографирование отношений",
-      description: "Визуализируйте и отслеживайте деловые отношения, определяйте ключевых влиятелей и понимайте сетевые связи в вашей отрасли"
-    },
-    {
-      icon: BarChart3,
-      title: "Панель бизнес-аналитики",
-      description: "Комплексная аналитика по исследованию контактов, сетевым инсайтам, прогрессу построения отношений и бизнес-возможностям"
-    }
-  ];
+  // COMMENTED OUT - OLD FEATURES AND STATS
+  // const features = language === 'en' ? [
+  //   {
+  //     icon: MessageCircle,
+  //     title: "Business Contact Research",
+  //     description: "Advanced research tools that help you discover and analyze your ideal customers, partners, and business contacts in Threads discussions"
+  //   },
+  //   {
+  //     icon: Target,
+  //     title: "Networking Intelligence",
+  //     description: "Get detailed insights and analytics on potential business relationships, conversation patterns, and networking opportunities"
+  //   },
+  //   {
+  //     icon: UserCheck,
+  //     title: "Relationship Mapping",
+  //     description: "Visualize and track business relationships, identify key influencers, and understand network connections in your industry"
+  //   },
+  //   {
+  //     icon: BarChart3,
+  //     title: "Business Analytics Dashboard",
+  //     description: "Comprehensive analytics on contact research, networking insights, relationship building progress, and business opportunities"
+  //   }
+  // ] : [
+  //   {
+  //     icon: MessageCircle,
+  //     title: "Исследование бизнес-контактов",
+  //     description: "Продвинутые инструменты исследования, которые помогают обнаруживать и анализировать идеальных клиентов, партнеров и бизнес-контакты в дискуссиях Threads"
+  //   },
+  //   {
+  //     icon: Target,
+  //     title: "Сетевая аналитика",
+  //     description: "Получайте детальные инсайты и аналитику по потенциальным деловым отношениям, паттернам разговоров и возможностям нетворкинга"
+  //   },
+  //   {
+  //     icon: UserCheck,
+  //     title: "Картографирование отношений",
+  //     description: "Визуализируйте и отслеживайте деловые отношения, определяйте ключевых влиятелей и понимайте сетевые связи в вашей отрасли"
+  //   },
+  //   {
+  //     icon: BarChart3,
+  //     title: "Панель бизнес-аналитики",
+  //     description: "Комплексная аналитика по исследованию контактов, сетевым инсайтам, прогрессу построения отношений и бизнес-возможностям"
+  //   }
+  // ];
 
-
-
-  const stats = language === 'en' ? [
-    { icon: Users, number: "2.5K+", label: "Active Users" },
-    { icon: TrendingUpIcon, number: "15K+", label: "Business Contacts Found" },
-    { icon: MessageCircle, number: "1M+", label: "Successful Connections" }
-  ] : [
-    { icon: Users, number: "2.5K+", label: "Активных пользователей" },
-    { icon: TrendingUpIcon, number: "15K+", label: "Найдено бизнес-контактов" },
-    { icon: MessageCircle, number: "1M+", label: "Успешных подключений" }
-  ];
+  // const stats = language === 'en' ? [
+  //   { icon: Users, number: "2.5K+", label: "Active Users" },
+  //   { icon: TrendingUpIcon, number: "15K+", label: "Business Contacts Found" },
+  //   { icon: MessageCircle, number: "1M+", label: "Successful Connections" }
+  // ] : [
+  //   { icon: Users, number: "2.5K+", label: "Активных пользователей" },
+  //   { icon: TrendingUpIcon, number: "15K+", label: "Найдено бизнес-контактов" },
+  //   { icon: MessageCircle, number: "1M+", label: "Успешных подключений" }
+  // ];
 
   return (
     <BackgroundGradientAnimation>
@@ -319,23 +319,23 @@ export default function Home() {
           <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-6 sm:mb-8 mt-8 sm:mt-12 md:mt-6 lg:mt-0" role="banner">
             <Megaphone className="w-4 h-4 text-cyan-400 mr-2" aria-hidden="true" />
             <span className="text-cyan-400 font-semibold text-sm">
-              {language === 'en' ? 'AI Business Networking' : 'AI бизнес-нетворкинг'}
+              {language === 'en' ? 'Customer Acquisition AI-Agent' : 'AI бизнес-нетворкинг'}
             </span>
           </div>
 
           {/* Main Title - H1 for SEO */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight">
             {language === 'en' ? (
-              <>
-                Your{" "}
-                <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  Threads
-                </span>
-                {" "}Business Intelligence
-              </>
+              <RotatingText 
+                texts={[
+                  "Turns Threads into your customer acquisition channel",
+                  "No ads. No outreach. No spam. Just organic customer acquisition", 
+                  "Promotes your business on Threads even while you sleep"
+                ]}
+                interval={5000}
+              />
             ) : (
               <>
-                Ваша{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                   Threads
                 </span>
@@ -347,7 +347,7 @@ export default function Home() {
           {/* Subtitle - SEO-optimized description */}
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4" role="doc-subtitle">
             {language === 'en' 
-              ? "Advanced business intelligence platform that analyzes Threads conversations to discover valuable contacts, research market trends, and identify networking opportunities. Get actionable insights for strategic business development."
+              ? "ThreadsHelper scans Threads to spot the right conversations and people, then builds connections that turn into customers."
               : "Продвинутая платформа бизнес-аналитики, которая анализирует разговоры в Threads для обнаружения ценных контактов, исследования рыночных трендов и выявления возможностей нетворкинга. Получайте практические инсайты для стратегического развития бизнеса."
             }
           </p>
@@ -355,8 +355,8 @@ export default function Home() {
           {/* Feature Pills */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 px-4" role="list">
             {(language === 'en' ? [
-              { icon: Target, text: "Contact Research" },
-              { icon: MessageCircle, text: "Conversation Analytics" },
+              { icon: Target, text: "High-intent Leads" },
+              { icon: MessageCircle, text: "Engage Naturally" },
               { icon: BarChart3, text: "Business Intelligence" }
             ] : [
               { icon: Target, text: "Исследование контактов" },
@@ -423,22 +423,134 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-white/60 px-4" role="list">
             <div className="flex items-center space-x-2" role="listitem">
               <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" aria-hidden="true" />
-              <span className="text-xs sm:text-sm">{language === 'en' ? 'Research Only' : 'Только исследования'}</span>
+              <span className="text-xs sm:text-sm">{language === 'en' ? 'Secure & Private. Stores your data locally.' : 'Только исследования'}</span>
             </div>
-            <div className="flex items-center space-x-2" role="listitem">
+            {/* <div className="flex items-center space-x-2" role="listitem">
               <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" aria-hidden="true" />
               <span className="text-xs sm:text-sm">{language === 'en' ? 'Analytics' : 'Аналитика'}</span>
             </div>
             <div className="flex items-center space-x-2" role="listitem">
               <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" aria-hidden="true" />
               <span className="text-xs sm:text-sm">{language === 'en' ? 'Insights' : 'Инсайты'}</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6">
+      {/* Screenshots Section - How ThreadsHelper Works */}
+      <section className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-black/20 to-transparent">
+        <div className="max-w-7xl mx-auto">
+          <header className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              {language === 'en' ? 'See ThreadsHelper in Action' : 'Посмотрите ThreadsHelper в действии'}
+            </h2>
+            <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto px-4">
+              {language === 'en' 
+                ? "Real results from real businesses using ThreadsHelper to grow their customer base organically"
+                : "Реальные результаты от реальных бизнесов, использующих ThreadsHelper для органического роста клиентской базы"
+              }
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+            {/* Screenshot 1 - High Engagement */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="mb-6">
+                <img 
+                  src="/screenshots/screen-1.png" 
+                  alt="ThreadsHelper gets more attention than other brands" 
+                  className="w-full rounded-xl border border-white/20 shadow-2xl"
+                />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                {language === 'en' ? 'Gets More Attention Than Other Brands' : 'Получает больше внимания, чем другие бренды'}
+              </h3>
+              <p className="text-white/80 leading-relaxed">
+                {language === 'en' 
+                  ? "ThreadsHelper consistently generates the highest engagement rates. This post became the most commented thread, proving organic reach beats paid ads."
+                  : "ThreadsHelper стабильно генерирует самые высокие показатели вовлеченности. Этот пост стал самым комментируемым тредом, доказывая, что органический охват превосходит платную рекламу."
+                }
+              </p>
+            </div>
+
+            {/* Screenshot 2 - Natural Promotion */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="mb-6">
+                <img 
+                  src="/screenshots/screen-2.png" 
+                  alt="Natural promotion instead of sales pitch" 
+                  className="w-full rounded-xl border border-white/20 shadow-2xl"
+                />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                {language === 'en' ? 'Natural Promotion, Not Sales Pitch' : 'Естественное продвижение, а не продающий текст'}
+              </h3>
+              <p className="text-white/80 leading-relaxed">
+                {language === 'en' 
+                  ? "ThreadsHelper drives attention without sounding salesy. It engages naturally in conversations, building trust instead of pushing products."
+                  : "ThreadsHelper привлекает внимание, не звуча навязчиво. Он естественно участвует в разговорах, строя доверие вместо навязывания продуктов."
+                }
+              </p>
+            </div>
+
+            {/* Screenshot 3 - People Engagement */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="mb-6">
+                <img 
+                  src="/screenshots/screen-3.png" 
+                  alt="People like, reply and follow your brand" 
+                  className="w-full rounded-xl border border-white/20 shadow-2xl"
+                />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                {language === 'en' ? 'People Like, Reply & Follow Your Brand' : 'Люди лайкают, отвечают и подписываются на ваш бренд'}
+              </h3>
+              <p className="text-white/80 leading-relaxed">
+                {language === 'en' 
+                  ? "Real engagement from real people. Users actively interact with your content, building a genuine community around your brand."
+                  : "Реальное взаимодействие от реальных людей. Пользователи активно взаимодействуют с вашим контентом, создавая подлинное сообщество вокруг вашего бренда."
+                }
+              </p>
+            </div>
+
+            {/* Screenshot 4 - Customer Conversion */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="mb-6">
+                <img 
+                  src="/screenshots/screen-4.png" 
+                  alt="ThreadsHelper converts engagement into actual customers" 
+                  className="w-full rounded-xl border border-white/20 shadow-2xl"
+                />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                {language === 'en' ? 'Converts Into Actual Customers' : 'Превращается в реальных клиентов'}
+              </h3>
+              <p className="text-white/80 leading-relaxed">
+                {language === 'en' 
+                  ? "Track clicks, conversions, and customer acquisition. See how ThreadsHelper engagement translates directly into business growth and revenue."
+                  : "Отслеживайте клики, конверсии и привлечение клиентов. Посмотрите, как взаимодействие с ThreadsHelper напрямую превращается в рост бизнеса и доходы."
+                }
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-12 sm:mt-16">
+            <a 
+              href="#download" 
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-purple-500 text-white font-semibold rounded-xl hover:from-cyan-300 hover:to-purple-400 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+            >
+              <span className="mr-2">
+                {language === 'en' ? 'Start Growing Your Business' : 'Начните развивать свой бизнес'}
+              </span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section - COMMENTED OUT */}
+      {/* <section id="features" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <header className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
@@ -459,10 +571,8 @@ export default function Home() {
                 className="group interactive-card p-6 sm:p-8 glass border border-white/20 rounded-3xl hover:border-cyan-400/50 transition-all duration-500 hover:scale-105 relative overflow-hidden animate-bounce-in"
                 style={{animationDelay: `${index * 0.1}s`}}
               >
-                {/* Фоновый градиент */}
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 via-purple-400/5 to-pink-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* Анимированные частицы */}
                 <div className="absolute inset-0 pointer-events-none">
                   <div className="absolute top-1/4 right-1/4 w-1 h-1 bg-cyan-400/30 rounded-full animate-float" style={{animationDelay: `${index * 0.3}s`}}></div>
                   <div className="absolute bottom-1/3 left-1/3 w-0.5 h-0.5 bg-purple-400/40 rounded-full animate-float" style={{animationDelay: `${index * 0.5}s`}}></div>
@@ -481,7 +591,6 @@ export default function Home() {
                     {feature.description}
                   </p>
                   
-                  {/* Декоративная линия */}
                   <div className="mt-4 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-500"></div>
                 </div>
               </article>
@@ -490,7 +599,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 bg-gradient-to-r from-black/20 to-transparent">
         <div className="max-w-7xl mx-auto">
           <header className="text-center mb-8 sm:mb-12">
@@ -514,6 +622,122 @@ export default function Home() {
                 <div className="text-white/70 text-sm sm:text-base">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* How ThreadsHelper Works - Process Section */}
+      <section id="features" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          <header className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              {language === 'en' ? 'How ThreadsHelper Works' : 'Как работает ThreadsHelper'}
+            </h2>
+            <p className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto px-4">
+              {language === 'en' 
+                ? "Our AI analyzes posts, profiles, and conversations to generate contextually relevant comments that speak your customers' language"
+                : "Наш ИИ анализирует посты, профили и разговоры, чтобы генерировать контекстуально релевантные комментарии, которые говорят на языке ваших клиентов"
+              }
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
+            {/* Step 1 - Analysis */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="p-3 rounded-2xl bg-gradient-to-r from-cyan-400/20 to-purple-400/20 mr-4">
+                  <Target className="w-8 h-8 text-cyan-400" />
+                </div>
+                <div className="bg-cyan-400/20 text-cyan-400 px-3 py-1 rounded-full text-sm font-semibold">
+                  {language === 'en' ? 'Step 1' : 'Шаг 1'}
+                </div>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+                {language === 'en' ? 'Deep Analysis & Profiling' : 'Глубокий анализ и профилирование'}
+              </h3>
+              <p className="text-white/80 leading-relaxed mb-4">
+                {language === 'en' 
+                  ? "We analyze posts in your feed, user profiles, and comments under posts. Based on this data, we create detailed account profiles and assess post relevance to your business."
+                  : "Мы анализируем посты в вашей ленте, профили пользователей и комментарии под постами. На основе этих данных создаем детальные профили аккаунтов и оцениваем релевантность постов для вашего бизнеса."
+                }
+              </p>
+            </div>
+
+            {/* Step 2 - Context Generation */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-400/20 to-pink-400/20 mr-4">
+                  <MessageCircle className="w-8 h-8 text-purple-400" />
+                </div>
+                <div className="bg-purple-400/20 text-purple-400 px-3 py-1 rounded-full text-sm font-semibold">
+                  {language === 'en' ? 'Step 2' : 'Шаг 2'}
+                </div>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+                {language === 'en' ? 'Smart Comment Generation' : 'Умная генерация комментариев'}
+              </h3>
+              <p className="text-white/80 leading-relaxed mb-4">
+                {language === 'en' 
+                  ? "We generate comments based on collected context, allowing us to be more precise and speak your customers' language naturally and authentically."
+                  : "Генерируем комментарии на основе собранного контекста, что позволяет нам быть более точными и говорить на языке клиентов естественно и аутентично."
+                }
+              </p>
+            </div>
+
+            {/* Step 3 - Dashboard Management */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="p-3 rounded-2xl bg-gradient-to-r from-green-400/20 to-cyan-400/20 mr-4">
+                  <Users className="w-8 h-8 text-green-400" />
+                </div>
+                <div className="bg-green-400/20 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">
+                  {language === 'en' ? 'Step 3' : 'Шаг 3'}
+                </div>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+                {language === 'en' ? 'Contact Management Dashboard' : 'Дашборд управления контактами'}
+              </h3>
+              <p className="text-white/80 leading-relaxed mb-4">
+                {language === 'en' 
+                  ? "All profiles and actions are saved to our dashboard, where you can conveniently manage your contact database and track engagement history."
+                  : "Все профили и действия сохраняются в наш дашборд, откуда можно удобно управлять базой контактов и отслеживать историю взаимодействий."
+                }
+              </p>
+            </div>
+
+            {/* Step 4 - Content Ideas */}
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="p-3 rounded-2xl bg-gradient-to-r from-pink-400/20 to-orange-400/20 mr-4">
+                  <Sparkles className="w-8 h-8 text-pink-400" />
+                </div>
+                <div className="bg-pink-400/20 text-pink-400 px-3 py-1 rounded-full text-sm font-semibold">
+                  {language === 'en' ? 'Step 4' : 'Шаг 4'}
+                </div>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
+                {language === 'en' ? 'Trending Content Ideas' : 'Трендовые идеи контента'}
+              </h3>
+              <p className="text-white/80 leading-relaxed mb-4">
+                {language === 'en' 
+                  ? "The dashboard includes a Post Ideas section featuring the most viral posts from recent times, helping you generate ideas for your own content strategy."
+                  : "В дашборде есть секция Post Ideas с самыми хайповыми постами за последнее время, на основе которых можно генерировать идеи для собственного контента."
+                }
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-12 sm:mt-16">
+            <a 
+              href="#pricing" 
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-purple-500 text-white font-semibold rounded-xl hover:from-cyan-300 hover:to-purple-400 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+            >
+              <span className="mr-2">
+                {language === 'en' ? 'Start Building Your Customer Base' : 'Начните строить клиентскую базу'}
+              </span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
       </section>
