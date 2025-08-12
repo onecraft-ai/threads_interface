@@ -319,7 +319,7 @@ export default function Home() {
           <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-6 sm:mb-8 mt-8 sm:mt-12 md:mt-6 lg:mt-0" role="banner">
             <Megaphone className="w-4 h-4 text-cyan-400 mr-2" aria-hidden="true" />
             <span className="text-cyan-400 font-semibold text-sm">
-              {language === 'en' ? 'Customer Acquisition AI-Agent' : 'AI бизнес-нетворкинг'}
+              {language === 'en' ? 'Customer Acquisition AI-Agent' : 'AI-агент по привлечению клиентов'}
             </span>
           </div>
 
@@ -335,12 +335,14 @@ export default function Home() {
                 interval={5000}
               />
             ) : (
-              <>
-                <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  Threads
-                </span>
-                {" "}Бизнес-Аналитика
-              </>
+              <RotatingText 
+                texts={[
+                  "Превращает Threads в ваш канал привлечения клиентов",
+                  "Без рекламы. Без холодного аутрича. Без спама. Только органическое привлечение клиентов",
+                  "Продвигает ваш бизнес в Threads даже пока вы спите"
+                ]}
+                interval={5000}
+              />
             )}
           </h1>
 
@@ -348,7 +350,7 @@ export default function Home() {
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4" role="doc-subtitle">
             {language === 'en' 
               ? "ThreadsHelper scans Threads to spot the right conversations and people, then builds connections that turn into customers."
-              : "Продвинутая платформа бизнес-аналитики, которая анализирует разговоры в Threads для обнаружения ценных контактов, исследования рыночных трендов и выявления возможностей нетворкинга. Получайте практические инсайты для стратегического развития бизнеса."
+              : "ThreadsHelper сканирует Threads, находит нужные обсуждения и людей, затем выстраивает связи, которые превращаются в клиентов."
             }
           </p>
 
@@ -359,8 +361,8 @@ export default function Home() {
               { icon: MessageCircle, text: "Engage Naturally" },
               { icon: BarChart3, text: "Business Intelligence" }
             ] : [
-              { icon: Target, text: "Исследование контактов" },
-              { icon: MessageCircle, text: "Аналитика разговоров" },
+              { icon: Target, text: "Высокоцелевые лиды" },
+              { icon: MessageCircle, text: "Естественное вовлечение" },
               { icon: BarChart3, text: "Бизнес-аналитика" }
             ]).map((feature, index) => (
               <div 
