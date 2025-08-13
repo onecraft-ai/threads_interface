@@ -89,23 +89,7 @@ export function DownloadSection() {
       };
     }
     
-    if (name.endsWith('.rpm') || (name.endsWith('.zip') && name.includes('linux'))) {
-      return {
-        platform: name.endsWith('.rpm') ? 'Linux' : 'Linux (Portable)',
-        osType: 'linux' as const,
-        icon: LinuxIcon,
-        color: 'orange'
-      };
-    }
-    
-    if (name.endsWith('.zip') && (name.includes('darwin') || name.includes('mac'))) {
-      return {
-        platform: 'macOS (Portable)',
-        osType: 'macos' as const,
-        icon: MacOSIcon,
-        color: 'gray'
-      };
-    }
+    // Exclude all zip and linux formats from being recognized
     
     return {
       platform: 'Unknown',
@@ -216,10 +200,31 @@ export function DownloadSection() {
           )}
 
           {(!loading && !error && release) && (() => {
-            const assetsWithPlatformInfo = release.assets.map(asset => ({
+            const allowedAssets = release.assets.filter(asset => {
+              const name = asset.name.toLowerCase();
+              // Keep only Windows .exe and macOS .dmg; exclude all .zip and others
+              if (name.endsWith('.exe')) return true;
+              if (name.endsWith('.dmg')) return true;
+              return false;
+            });
+
+            if (allowedAssets.length === 0) {
+              console.error('No supported installers found (exe/dmg) in release assets.');
+              return (
+                <div className="max-w-4xl mx-auto text-center">
+                  <div className="text-6xl mb-4">⚠️</div>
+                  <p className="text-xl text-white/80 mb-6">
+                    {language === 'ru' ? 'Нет доступных установщиков для Windows/macOS' : 'No Windows/macOS installers available'}
+                  </p>
+                </div>
+              );
+            }
+
+            const assetsWithPlatformInfo = allowedAssets.map(asset => ({
               ...asset,
               platformInfo: getPlatformInfo(asset.name)
             }));
+
             const primaryAsset = assetsWithPlatformInfo.find(asset => asset.platformInfo.osType === userOS) || assetsWithPlatformInfo[0];
             const otherAssets = assetsWithPlatformInfo.filter(asset => asset.id !== primaryAsset.id);
 
